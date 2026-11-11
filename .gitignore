@@ -1,0 +1,21 @@
+# Dart / Flutter
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec_overrides.yaml
+*.iml
+.idea/
+.vscode/
+# Android
+app/android/.gradle/
+app/android/local.properties
+app/android/key.properties
+*.jks
+*.keystore
+# Secrets / data
+*.env
+server/data/
+server/*.db
+*.gosbak
