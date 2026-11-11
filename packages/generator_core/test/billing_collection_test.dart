@@ -27,6 +27,15 @@ void main() {
       expect(byCab.length, 2);
     });
 
+    test('debt filter returns only subscribers who owe money', () async {
+      final f = await setup();
+      final owes = await addSubscriber(f, name: 'عليه دين', openingDebt: 9000);
+      await addSubscriber(f, name: 'مسدد بالكامل');
+      final rows = await f.os.subscribers.search(f.generatorId, const SubscriberFilter(onlyWithDebt: true));
+      expect(rows.map((r) => r['id']), [owes]);
+      expect(rows.single['balance'], 9000);
+    });
+
     test('rejects invalid subscriber data with Arabic message', () async {
       final f = await setup();
       expect(

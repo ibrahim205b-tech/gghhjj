@@ -323,15 +323,16 @@ class SubscriberService {
       where.add("s.status != 'transferred'");
     }
     final arAccount = LedgerService.accountId(generatorId, Acc.receivables);
-    final having = f.onlyWithDebt ? 'HAVING balance > 0' : '';
     return ctx.db.rawQuery('''
-      SELECT s.id, s.account_no, s.full_name, s.phone, s.meter_no, s.amps, s.amp_price, s.status, s.connected,
-        s.subscription_type, a.name AS area_name, c.code AS cabinet_code,
-        COALESCE((SELECT SUM(debit - credit) FROM journal_lines jl WHERE jl.account_id = ?
-          AND jl.party_type = 'subscriber' AND jl.party_id = s.id), 0) AS balance
-      FROM subscribers s LEFT JOIN areas a ON a.id = s.area_id LEFT JOIN cabinets c ON c.id = s.cabinet_id
-      WHERE ${where.join(' AND ')} $having
-      ORDER BY CAST(s.account_no AS INTEGER), s.full_name LIMIT ? OFFSET ?''',
+      SELECT * FROM (
+        SELECT s.id, s.account_no, s.full_name, s.phone, s.meter_no, s.amps, s.amp_price, s.status, s.connected,
+          s.subscription_type, a.name AS area_name, c.code AS cabinet_code,
+          COALESCE((SELECT SUM(debit - credit) FROM journal_lines jl WHERE jl.account_id = ?
+            AND jl.party_type = 'subscriber' AND jl.party_id = s.id), 0) AS balance
+        FROM subscribers s LEFT JOIN areas a ON a.id = s.area_id LEFT JOIN cabinets c ON c.id = s.cabinet_id
+        WHERE ${where.join(' AND ')}
+      ) ${f.onlyWithDebt ? 'WHERE balance > 0' : ''}
+      ORDER BY CAST(account_no AS INTEGER), full_name LIMIT ? OFFSET ?''',
         [arAccount, ...args, limit, offset]);
   }
 
