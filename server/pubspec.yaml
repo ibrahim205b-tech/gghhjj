@@ -1,0 +1,23 @@
+name: generator_os_server
+description: Sync, device pairing and licensing backend for Generator OS.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  shelf: ^1.4.2
+  shelf_router: ^1.1.4
+  sqlite3: ^2.4.7
+  cryptography: ^2.7.0
+  crypto: ^3.0.6
+  args: ^2.6.0
+
+dev_dependencies:
+  test: ^1.25.0
+  http: ^1.2.2
+  lints: ^5.0.0
+  generator_core:
+    path: ../packages/generator_core
+  sqflite_common_ffi: ^2.3.4

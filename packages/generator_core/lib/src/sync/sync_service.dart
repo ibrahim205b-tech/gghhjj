@@ -157,6 +157,9 @@ class SyncService {
               'local_payload': local['payload'], 'remote_payload': jsonEncode(c['server_payload']),
               'resolution': c['resolution'] ?? 'server_kept_existing',
             });
+            if (c['server_payload'] is Map && immutableTables.contains(c['table'])) {
+              await _adoptCanonical(t, c['table'] as String, Map<String, Object?>.from(c['server_payload'] as Map));
+            }
             accepted.add(c['key'] as String);
           }
           for (final k in accepted) {
@@ -208,6 +211,22 @@ class SyncService {
             [error, b['seq']]);
       }
     });
+  }
+
+  /// Replaces the local copy of an append-only row with the server's
+  /// canonical copy of the same document (same deterministic id). Used only
+  /// when two devices produced the same document offline.
+  Future<void> _adoptCanonical(DatabaseExecutor t, String table, Map<String, Object?> serverRow) async {
+    final cols = await _cols(t, table);
+    final row = Map<String, Object?>.from(serverRow)..removeWhere((k, _) => !cols.contains(k));
+    final id = row.remove('id');
+    if (id == null || row.isEmpty) return;
+    await t.insert('local_meta', {'key': 'sync_override', 'value': '1'}, conflictAlgorithm: ConflictAlgorithm.replace);
+    try {
+      await t.update(table, row, where: 'id = ?', whereArgs: [id]);
+    } finally {
+      await t.delete('local_meta', where: "key = 'sync_override'");
+    }
   }
 
   final _columns = <String, Set<String>>{};

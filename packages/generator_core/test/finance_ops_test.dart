@@ -313,7 +313,7 @@ void main() {
     test('dashboard, P&L, series, CSV and Arabic/Iraqi questions use real data', () async {
       final f = await setup();
       final s1 = await addSubscriber(f, name: 'حسن علي', amps: 10, price: 3000);
-      final s2 = await addSubscriber(f, name: 'كريم جاسم', amps: 5, price: 3000);
+      await addSubscriber(f, name: 'كريم جاسم', amps: 5, price: 3000);
       await f.os.billing.generateMonth(f.generatorId, '2026-03');
       final col = await f.os.collection.createCollector(fullName: 'أبو محمد');
       await f.os.collection.recordPayment(subscriberId: s1, amount: 30000, collectorId: col);

@@ -70,8 +70,12 @@ CREATE TRIGGER trg_${table}_no_delete BEFORE DELETE ON $table
 BEGIN SELECT RAISE(ABORT, 'IMMUTABLE_RECORD'); END;
 ''';
 
+/// Updates are blocked except while the sync engine replaces a duplicate of
+/// the same business document with the server's canonical copy (flag set in
+/// `local_meta` inside the sync transaction only). Deletes are always blocked.
 String _immutableUpdate(String table) => '''
 CREATE TRIGGER trg_${table}_no_update BEFORE UPDATE ON $table
+WHEN NOT EXISTS (SELECT 1 FROM local_meta WHERE key = 'sync_override')
 BEGIN SELECT RAISE(ABORT, 'IMMUTABLE_RECORD'); END;
 ''';
 
@@ -238,7 +242,9 @@ final migrations = <Migration>[
       amount INTEGER NOT NULL CHECK(amount > 0), method TEXT NOT NULL DEFAULT 'cash',
       collector_id TEXT, cashbox_id TEXT, receipt_no TEXT NOT NULL, paid_at TEXT NOT NULL,
       pay_date TEXT NOT NULL, notes TEXT, created_by TEXT, device_id TEXT,
-      reversal_of TEXT, UNIQUE(receipt_no))''',
+      reversal_of TEXT)''',
+    // Receipt numbers are for display; the payment id is the identity.
+    'CREATE INDEX idx_pay_receipt ON payments(receipt_no)',
     _immutable('payments'),
     _immutableUpdate('payments'),
     'CREATE UNIQUE INDEX idx_pay_reversal ON payments(reversal_of) WHERE reversal_of IS NOT NULL',
