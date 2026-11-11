@@ -355,7 +355,12 @@ class SeriesChart extends StatelessWidget {
                     getTooltipColor: (_) => t.colorScheme.inverseSurface,
                     getTooltipItem: (group, _, rod, rodIndex) => BarTooltipItem(
                       '${points[group.x].label}\n${rodIndex == 0 ? 'المقبوضات' : 'المصروفات'}: ${money(rod.toY)}',
-                      TextStyle(color: t.colorScheme.onInverseSurface, fontSize: 11, fontFamily: 'NotoKufiArabic'),
+                      TextStyle(
+                        color: t.colorScheme.onInverseSurface,
+                        fontSize: 11,
+                        fontFamily: 'NotoKufiArabic',
+                        fontFamilyFallback: const ['NotoSans'],
+                      ),
                     ),
                   ),
                 ),

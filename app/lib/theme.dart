@@ -33,7 +33,11 @@ ThemeData buildTheme(Brightness b) {
       elevation: 0,
       scrolledUnderElevation: 1,
       centerTitle: false,
-      titleTextStyle: base.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700, fontFamily: 'NotoKufiArabic'),
+      titleTextStyle: base.textTheme.titleMedium?.copyWith(
+        fontWeight: FontWeight.w700,
+        fontFamily: 'NotoKufiArabic',
+        fontFamilyFallback: const ['NotoSans'],
+      ),
     ),
     cardTheme: CardThemeData(
       elevation: 0,
@@ -58,7 +62,11 @@ ThemeData buildTheme(Brightness b) {
       style: FilledButton.styleFrom(
         minimumSize: const Size(64, 48),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        textStyle: const TextStyle(fontFamily: 'NotoKufiArabic', fontWeight: FontWeight.w700),
+        textStyle: const TextStyle(
+          fontFamily: 'NotoKufiArabic',
+          fontFamilyFallback: ['NotoSans'],
+          fontWeight: FontWeight.w700,
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(

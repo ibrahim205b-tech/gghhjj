@@ -6,6 +6,10 @@
 
 ---
 
+| لوحة التحكم (هاتف) | شاشة الجابي | وصل حراري |
+|---|---|---|
+| <img src="docs/screenshots/phone_dashboard.png" width="230"> | <img src="docs/screenshots/phone_collector.png" width="230"> | <img src="docs/screenshots/receipt_80mm.png" width="230"> |
+
 ## المحتويات
 
 | المجلد | الوصف |

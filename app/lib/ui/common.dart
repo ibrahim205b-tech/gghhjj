@@ -211,9 +211,9 @@ class StatGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, c) {
-        final cols = c.maxWidth >= 1100
+        final cols = c.maxWidth >= 940
             ? 4
-            : c.maxWidth >= 700
+            : c.maxWidth >= 640
             ? 3
             : 2;
         const gap = 10.0;

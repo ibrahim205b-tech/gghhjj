@@ -38,6 +38,65 @@ class PdfService {
     return _theme = pw.ThemeData.withFont(base: regular, bold: bold, fontFallback: [latin, latinBold]);
   }
 
+  static final _arabic = RegExp('[\u0600-\u06FF]');
+
+  /// Latin-only values (codes, dates, times) are laid out left-to-right so
+  /// they are not reordered inside the right-to-left page.
+  static pw.TextDirection dirOf(String s) => _arabic.hasMatch(s) ? pw.TextDirection.rtl : pw.TextDirection.ltr;
+
+  static final _ltrToken = RegExp(r'[A-Za-z]|^\(?\d{2,4}[-/:.]\d');
+
+  /// Text that may mix Arabic with Latin codes/dates. The PDF engine reverses
+  /// Latin letters embedded in Arabic runs, so mixed strings are split into
+  /// direction runs rendered as separate widgets inside a right-to-left wrap.
+  static pw.Widget txt(String s, {pw.TextStyle? style, pw.TextAlign? align}) {
+    if (!_arabic.hasMatch(s)) {
+      return pw.Text(s, style: style, textAlign: align, textDirection: pw.TextDirection.ltr);
+    }
+    final tokens = s.split(' ');
+    if (!tokens.any(_ltrToken.hasMatch)) {
+      return pw.Text(s, style: style, textAlign: align, textDirection: pw.TextDirection.rtl);
+    }
+    final runs = <(bool, String)>[];
+    for (final t in tokens) {
+      final ltr = _ltrToken.hasMatch(t) && !_arabic.hasMatch(t);
+      if (runs.isNotEmpty && runs.last.$1 == ltr) {
+        runs[runs.length - 1] = (ltr, '${runs.last.$2} $t');
+      } else {
+        runs.add((ltr, t));
+      }
+    }
+    return pw.Wrap(
+      spacing: 3,
+      children: [
+        for (final (ltr, run) in runs)
+          if (run.trim().isNotEmpty)
+            pw.Text(run.trim(), style: style, textDirection: ltr ? pw.TextDirection.ltr : pw.TextDirection.rtl),
+      ],
+    );
+  }
+
+  /// Table whose cells each get the right text direction.
+  static pw.Widget _table(List<String> headers, List<List<String>> rows, double size, {PdfColor? headerColor}) {
+    pw.Widget cell(String v, {bool head = false}) => pw.Padding(
+      padding: const pw.EdgeInsets.symmetric(horizontal: 4, vertical: 3),
+      child: txt(
+        v,
+        style: pw.TextStyle(fontSize: size, fontWeight: head ? pw.FontWeight.bold : null),
+      ),
+    );
+    return pw.Table(
+      border: pw.TableBorder.all(width: 0.5, color: PdfColors.grey600),
+      children: [
+        pw.TableRow(
+          decoration: headerColor == null ? null : pw.BoxDecoration(color: headerColor),
+          children: [for (final h in headers.reversed) cell(h, head: true)],
+        ),
+        for (final r in rows) pw.TableRow(children: [for (final c in r.reversed) cell(c)]),
+      ],
+    );
+  }
+
   static pw.Widget _kv(String k, String v, {bool bold = false, double size = 10}) => pw.Padding(
     padding: const pw.EdgeInsets.symmetric(vertical: 1.5),
     child: pw.Row(
@@ -45,7 +104,7 @@ class PdfService {
         pw.Expanded(
           child: pw.Text(k, style: pw.TextStyle(fontSize: size)),
         ),
-        pw.Text(
+        txt(
           v,
           style: pw.TextStyle(fontSize: size, fontWeight: bold ? pw.FontWeight.bold : null),
         ),
@@ -143,11 +202,9 @@ class PdfService {
           _kv('إجمالي الدين الحالي', formatMoney(st.totalDebt), bold: true, size: size + 1),
           pw.SizedBox(height: 10),
           if (st.movements.isNotEmpty)
-            pw.TableHelper.fromTextArray(
-              headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: size - 1),
-              cellStyle: pw.TextStyle(fontSize: size - 1),
-              headers: ['التاريخ', 'البيان', 'مدين', 'دائن'],
-              data: [
+            _table(
+              ['التاريخ', 'البيان', 'مدين', 'دائن'],
+              [
                 for (final m in st.movements)
                   [
                     '${m['entry_date']}',
@@ -156,6 +213,7 @@ class PdfService {
                     (m['credit'] as int) > 0 ? formatMoney(m['credit'] as int, withCurrency: false) : '',
                   ],
               ],
+              size - 1,
             ),
           if (!roll && invoices.isNotEmpty) ...[
             pw.SizedBox(height: 12),
@@ -163,11 +221,9 @@ class PdfService {
               'سجل الفواتير',
               style: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: size),
             ),
-            pw.TableHelper.fromTextArray(
-              headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: size - 1),
-              cellStyle: pw.TextStyle(fontSize: size - 1),
-              headers: ['الشهر', 'المبلغ', 'المسدد', 'المتبقي'],
-              data: [
+            _table(
+              ['الشهر', 'المبلغ', 'المسدد', 'المتبقي'],
+              [
                 for (final i in invoices.take(24))
                   [
                     '${i['period']}',
@@ -176,6 +232,7 @@ class PdfService {
                     formatMoney(i['unpaid'] as int, withCurrency: false),
                   ],
               ],
+              size - 1,
             ),
           ],
         ],
@@ -249,21 +306,13 @@ class PdfService {
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
             pw.Text(title, style: pw.TextStyle(fontSize: 15, fontWeight: pw.FontWeight.bold)),
-            pw.Text(subtitle, style: const pw.TextStyle(fontSize: 10)),
+            txt(subtitle, style: const pw.TextStyle(fontSize: 10)),
             pw.SizedBox(height: 8),
           ],
         ),
         footer: (c) =>
-            pw.Text('صفحة ${c.pageNumber} من ${c.pagesCount} — Generator OS', style: const pw.TextStyle(fontSize: 8)),
-        build: (_) => [
-          pw.TableHelper.fromTextArray(
-            headerStyle: pw.TextStyle(fontWeight: pw.FontWeight.bold, fontSize: 9),
-            cellStyle: const pw.TextStyle(fontSize: 9),
-            headerDecoration: const pw.BoxDecoration(color: PdfColor.fromInt(0xFFE3EEF1)),
-            headers: headers,
-            data: rows,
-          ),
-        ],
+            txt('صفحة ${c.pageNumber} من ${c.pagesCount} — Generator OS', style: const pw.TextStyle(fontSize: 8)),
+        build: (_) => [_table(headers, rows, 9, headerColor: const PdfColor.fromInt(0xFFE3EEF1))],
       ),
     );
     return doc.save();

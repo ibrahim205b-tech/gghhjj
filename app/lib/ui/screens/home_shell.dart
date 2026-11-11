@@ -289,7 +289,7 @@ class _GeneratorPicker extends StatelessWidget {
               children: [
                 const Icon(Icons.bolt, color: Brand.accent),
                 ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 140),
+                  constraints: BoxConstraints(maxWidth: isWide(context) ? 220 : 110),
                   child: Text('${current['name']}', overflow: TextOverflow.ellipsis),
                 ),
                 const Icon(Icons.arrow_drop_down),
