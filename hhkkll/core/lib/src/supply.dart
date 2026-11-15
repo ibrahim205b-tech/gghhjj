@@ -106,6 +106,7 @@ class QuestionSupply {
   final DedupIndex _history = DedupIndex();
   final Set<Category> _fetching = {};
   final Map<Category, int> _failures = {};
+  final Map<Category, int> _empty = {};
   final Set<Category> _retryScheduled = {};
   final List<Question> _usedThisSession = [];
   bool _online = true;
@@ -155,6 +156,9 @@ class QuestionSupply {
   Future<void> startSession({List<Question> alreadyUsed = const []}) async {
     _generation++;
     _active = true;
+    _failures.clear();
+    _empty.clear();
+    _retryScheduled.clear(); // stale timers check _generation and do nothing
     _session.clear();
     _usedThisSession.clear();
     for (final c in Category.values) {
@@ -291,6 +295,17 @@ class QuestionSupply {
     if (gotAny) {
       _failures[c] = 0;
       _lastError = null;
+      // Connected but the section is still low (e.g. the server is still
+      // generating): ask again shortly, backing off while nothing arrives.
+      if (_queues[c]!.length <= lowWatermark) {
+        final n = (_empty[c] ?? 0) + 1;
+        _empty[c] = n;
+        _scheduleRetry(c, gen, Duration(
+          milliseconds: min(maxBackoff.inMilliseconds, 5000 * (1 << min(n - 1, 10))),
+        ));
+      } else {
+        _empty[c] = 0;
+      }
     } else {
       _online = false;
       _lastError = error ?? 'لا توجد مصادر';
@@ -299,14 +314,19 @@ class QuestionSupply {
       final delay = Duration(
         milliseconds: min(maxBackoff.inMilliseconds, 2000 * (1 << min(n - 1, 10))),
       );
-      _retryScheduled.add(c);
-      _schedule(delay, () {
-        _retryScheduled.remove(c);
-        if (gen == _generation) _maybeRefill(c, force: true);
-      });
+      _scheduleRetry(c, gen, delay);
     }
     await _persist();
     _notify();
+  }
+
+  void _scheduleRetry(Category c, int gen, Duration delay) {
+    if (_retryScheduled.contains(c)) return;
+    _retryScheduled.add(c);
+    _schedule(delay, () {
+      _retryScheduled.remove(c);
+      if (gen == _generation) _maybeRefill(c, force: true);
+    });
   }
 
   void _ingest(Category c, List<Question> batch) {

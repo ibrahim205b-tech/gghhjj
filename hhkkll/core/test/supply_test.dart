@@ -200,6 +200,27 @@ void main() {
     expect(supply.peekQueue(Category.buzzer).map((q) => q.id), isNot(contains('old')));
   });
 
+  test('keeps polling while connected but a section is still low', () async {
+    final slow = _SlowSource();
+    final s = QuestionSupply(
+        sources: [slow], cache: cache, history: hist, lowWatermark: 3,
+        scheduler: (d, a) => scheduled.add((d, a)));
+    await s.init();
+    await s.startSession();
+    await settle();
+    expect(s.status.online, isTrue);
+    expect(s.queued(Category.buzzer), 0);
+    expect(scheduled, isNotEmpty, reason: 'a re-poll is scheduled without user action');
+    final first = scheduled.first.$1;
+    slow.ready = true; // generation finished on the server
+    for (final r in List.of(scheduled)) {
+      r.$2();
+    }
+    await settle();
+    expect(s.queued(Category.buzzer), greaterThan(0));
+    expect(first.inSeconds, inInclusiveRange(1, 60));
+  });
+
   test('invalid questions from a source are rejected', () async {
     final bad = _BadSource();
     final s = QuestionSupply(sources: [bad], cache: cache, history: hist, scheduler: (d, a) {});
@@ -209,6 +230,23 @@ void main() {
     expect(s.queued(Category.auction), 0);
     expect(s.status.rejectedInvalid, greaterThan(0));
   });
+}
+
+/// Answers with nothing until [ready] (server still generating).
+class _SlowSource implements QuestionSource {
+  bool ready = false;
+  int _n = 0;
+  @override
+  String get name => 'slow';
+  @override
+  Future<List<Question>> fetch(Category c, int count,
+      {required List<String> excludeFingerprints}) async {
+    if (!ready) return const [];
+    return [
+      for (var i = 0; i < count; i++)
+        make(c, 'slow-${c.code}-${_n++}', 'سؤال بطيء رقم $_n في قسم ${c.code}', 'جواب بطيء $_n'),
+    ];
+  }
 }
 
 class _BadSource implements QuestionSource {
