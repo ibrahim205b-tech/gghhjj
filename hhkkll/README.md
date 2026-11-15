@@ -136,11 +136,11 @@ docker build -t hhkkll-backend . && docker run -e ANTHROPIC_API_KEY=... -p 8080:
 | CI | بناء APK، `apksigner verify`، `aapt2 dump badging` (الاسم HHKKLL، الحزمة، الصلاحيات، الأصول)، تثبيت وتشغيل على محاكي Android 14 مع لقطات شاشة وفحص logcat | GitHub Actions |
 
 ### آخر نتيجة موثقة على GitHub Actions
-التشغيل [#2](https://github.com/ibrahim205b-tech/gghhjj/actions/runs/43747354306) — كل المراحل ناجحة:
-- اختبارات المحرك (42) والخادم (14) والتطبيق (13) ✅
-- روابط حزمة البداية: 44/44 تعمل ✅
-- بناء APK الإصدار 1.0.2 (59.6MB): `apksigner` تحقق التوقيع v2، `aapt2`: الاسم `HHKKLL`، الحزمة `com.hhkkll.quiz`، المعماريات arm64-v8a / armeabi-v7a / x86_64 ✅
-- محاكي Android 14: تثبيت ← تشغيل ← العملية تعمل بعد 18 ثانية ← لا أخطاء FATAL في logcat ✅
+التشغيل [#7](https://github.com/ibrahim205b-tech/gghhjj/actions/runs/43754009581) — كل المراحل ناجحة:
+- اختبارات المحرك (43) والخادم (14) والتطبيق (13) ✅
+- روابط حزمة البداية (1182 سؤالاً): 254/254 رابطاً تعمل ✅
+- بناء APK وفحصه بـ `apksigner` و`aapt2` (الاسم HHKKLL، الحزمة `com.hhkkll.quiz`) ✅
+- محاكي Android 14: تثبيت ← تشغيل ← لا أخطاء FATAL ✅
 
 ما لا تغطيه الاختبارات الآلية: جودة الصوت الفعلية على الهاتف، والتوليد الحقيقي عبر Claude (يحتاج مفتاحاً ويكلف مالاً؛ مختبَر بمزوّد محاكى يطبّق نفس قواعد القبول والرفض).
 
