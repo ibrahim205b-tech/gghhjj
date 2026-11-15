@@ -79,6 +79,7 @@ class QuestionSupply {
     this.lowWatermark = 4,
     this.batchSize = 6,
     this.maxCached = 3000,
+    this.maxQueue = 30,
     this.maxBackoff = const Duration(seconds: 60),
     Scheduler? scheduler,
     this.onChange,
@@ -90,6 +91,9 @@ class QuestionSupply {
   final int lowWatermark;
   final int batchSize;
   final int maxCached;
+
+  /// Questions kept ready per section (the rest stay in the cache).
+  final int maxQueue;
   final Duration maxBackoff;
   final Scheduler _schedule;
   void Function()? onChange;
@@ -197,11 +201,13 @@ class QuestionSupply {
     fresh.shuffle(rnd);
     old.shuffle(rnd);
     for (final q in fresh) {
+      if (_queues[q.category]!.length >= maxQueue) continue;
       if (_session.tryAdd(q) == null) _queues[q.category]!.add(q);
     }
     for (final c in Category.values) {
       if (_queues[c]!.length >= lowWatermark) continue;
       for (final q in old.where((q) => q.category == c)) {
+        if (_queues[c]!.length >= lowWatermark * 2) break;
         if (_session.tryAdd(q) == null) _queues[c]!.add(q);
       }
     }

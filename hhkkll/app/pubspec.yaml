@@ -1,0 +1,41 @@
+name: hhkkll
+description: "HHKKLL — Ultimate Football Quiz Game. لعبة مسابقات كرة القدم."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  hhkkll_core:
+    path: ../core
+  audioplayers: ^6.8.1
+  path_provider: ^2.1.6
+  http: ^1.6.0
+  url_launcher: ^6.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sounds/
+    - assets/data/
+  fonts:
+    - family: Kufi
+      fonts:
+        - asset: assets/fonts/NotoKufiArabic-Regular.ttf
+        - asset: assets/fonts/NotoKufiArabic-Bold.ttf
+          weight: 700
+    - family: Display
+      fonts:
+        - asset: assets/fonts/NotoSans-Regular.ttf
+        - asset: assets/fonts/NotoSans-Bold.ttf
+          weight: 700
