@@ -133,6 +133,13 @@ docker build -t hhkkll-backend . && docker run -e ANTHROPIC_API_KEY=... -p 8080:
 | اللقطات | توليد صور الشاشات | `HHKKLL_SHOTS=1 flutter test test/screenshots_test.dart` |
 | CI | بناء APK، `apksigner verify`، `aapt2 dump badging` (الاسم HHKKLL، الحزمة، الصلاحيات، الأصول)، تثبيت وتشغيل على محاكي Android 14 مع لقطات شاشة وفحص logcat | GitHub Actions |
 
+### آخر نتيجة موثقة على GitHub Actions
+التشغيل [#2](https://github.com/ibrahim205b-tech/gghhjj/actions/runs/43747354306) — كل المراحل ناجحة:
+- اختبارات المحرك (42) والخادم (14) والتطبيق (13) ✅
+- روابط حزمة البداية: 44/44 تعمل ✅
+- بناء APK الإصدار 1.0.2 (59.6MB): `apksigner` تحقق التوقيع v2، `aapt2`: الاسم `HHKKLL`، الحزمة `com.hhkkll.quiz`، المعماريات arm64-v8a / armeabi-v7a / x86_64 ✅
+- محاكي Android 14: تثبيت ← تشغيل ← العملية تعمل بعد 18 ثانية ← لا أخطاء FATAL في logcat ✅
+
 ما لا تغطيه الاختبارات الآلية: جودة الصوت الفعلية على الهاتف، والتوليد الحقيقي عبر Claude (يحتاج مفتاحاً ويكلف مالاً؛ مختبَر بمزوّد محاكى يطبّق نفس قواعد القبول والرفض).
 
 ---
