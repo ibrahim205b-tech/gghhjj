@@ -238,12 +238,14 @@ void main() {
 
     // Internet drops: play continues from the local reserve.
     src.offline = true;
-    // 12 starter + 6 live buzzer questions are queued; draw down past the
-    // refill threshold so the supply tries (and fails) to fetch.
-    for (var i = 0; i < 15; i++) {
-      final q = c.drawQuestion(Category.buzzer);
-      expect(q, isNotNull, reason: 'draw $i must not stop the game');
+    // Draw down past the refill threshold so the supply tries (and fails)
+    // to fetch; every draw must still return a question.
+    var draws = 0;
+    while (c.supply.queued(Category.buzzer) > 3 && draws < 100) {
+      expect(c.drawQuestion(Category.buzzer), isNotNull, reason: 'draw $draws must not stop the game');
+      draws++;
     }
+    expect(c.drawQuestion(Category.buzzer), isNotNull);
     await settle(tester, 200);
     expect(c.supply.status.online, isFalse);
     expect(h.retries, isNotEmpty, reason: 'a reconnection is scheduled automatically');

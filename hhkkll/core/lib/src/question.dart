@@ -182,11 +182,14 @@ class Question {
         : 'ans:${answerKeys.toList()..sort()}|${(contentTokens(fingerprintText).toSet().toList()..sort()).take(6).join(',')}',
   );
 
-  /// Normalised identities of the answer(s).
-  late final Set<String> answerKeys = {
-    answer,
-    ...acceptedAnswers,
-  }.map(normalizeAnswer).where((s) => s.isNotEmpty).toSet();
+  /// Normalised identities of the answer(s). An auction's answer is only a
+  /// count; its identity is the item list ([itemKeys]).
+  late final Set<String> answerKeys = category == Category.auction
+      ? const <String>{}
+      : {
+          answer,
+          ...acceptedAnswers,
+        }.map(normalizeAnswer).where((s) => s.isNotEmpty).toSet();
 
   /// Normalised identities of the auction items (each item = its main name).
   late final Set<String> itemKeys =

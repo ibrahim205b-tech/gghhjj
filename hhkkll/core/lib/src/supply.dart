@@ -349,13 +349,15 @@ class QuestionSupply {
 
   Future<void> _persist() async {
     if (_cached.length > maxCached) {
-      final sorted = _cached.values.toList()
+      final sorted = _cached.values.where((q) => q.origin != 'seed').toList()
         ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
       for (final q in sorted.take(_cached.length - maxCached)) {
         _cached.remove(q.id);
       }
     }
-    await cache.saveAll(_cached.values.toList());
+    // Bundled questions are re-loaded from the app on every start; only
+    // what came from the network needs to be stored.
+    await cache.saveAll(_cached.values.where((q) => q.origin != 'seed').toList());
   }
 
   /// Adds questions directly (e.g. bundled starter pack) to the reserve.

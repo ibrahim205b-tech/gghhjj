@@ -1,0 +1,1752 @@
+{
+ "version": 1,
+ "generated": "2026-11-15T00:00:00Z",
+ "questions": [
+  {
+   "id": "seed-auc-wc-winners",
+   "category": "auction",
+   "difficulty": "hard",
+   "question": "كم منتخباً تستطيع أن تسمّي من المنتخبات المتوّجة بكأس العالم (حتى نسخة 2022)؟",
+   "answer": "8 منتخبات",
+   "accepted_answers": [],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup|champion-nations|to-2022",
+   "sources": [
+    {
+     "title": "FIFA World Cup",
+     "url": "https://en.wikipedia.org/wiki/FIFA_World_Cup"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2022-12-18",
+   "items": [
+    {
+     "name": "البرازيل",
+     "aliases": [
+      "Brazil"
+     ]
+    },
+    {
+     "name": "ألمانيا",
+     "aliases": [
+      "Germany",
+      "ألمانيا الغربية",
+      "West Germany"
+     ]
+    },
+    {
+     "name": "إيطاليا",
+     "aliases": [
+      "Italy"
+     ]
+    },
+    {
+     "name": "الأرجنتين",
+     "aliases": [
+      "Argentina"
+     ]
+    },
+    {
+     "name": "فرنسا",
+     "aliases": [
+      "France"
+     ]
+    },
+    {
+     "name": "الأوروغواي",
+     "aliases": [
+      "Uruguay",
+      "أوروجواي"
+     ]
+    },
+    {
+     "name": "إنجلترا",
+     "aliases": [
+      "England"
+     ]
+    },
+    {
+     "name": "إسبانيا",
+     "aliases": [
+      "Spain"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-ucl-clubs",
+   "category": "auction",
+   "difficulty": "very_expert",
+   "question": "كم نادياً تستطيع أن تسمّي من الأندية التي توّجت بكأس أوروبا للأندية البطلة / دوري أبطال أوروبا (حتى نهائي 2025)؟",
+   "answer": "24 نادياً",
+   "accepted_answers": [],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "european-cup|winning-clubs|to-2025",
+   "sources": [
+    {
+     "title": "List of European Cup and UEFA Champions League finals",
+     "url": "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2025-05-31",
+   "items": [
+    {
+     "name": "ريال مدريد",
+     "aliases": [
+      "Real Madrid"
+     ]
+    },
+    {
+     "name": "بنفيكا",
+     "aliases": [
+      "Benfica"
+     ]
+    },
+    {
+     "name": "إنتر ميلان",
+     "aliases": [
+      "Inter",
+      "Internazionale"
+     ]
+    },
+    {
+     "name": "ميلان",
+     "aliases": [
+      "AC Milan",
+      "إيه سي ميلان"
+     ]
+    },
+    {
+     "name": "سيلتك",
+     "aliases": [
+      "Celtic"
+     ]
+    },
+    {
+     "name": "مانشستر يونايتد",
+     "aliases": [
+      "Manchester United"
+     ]
+    },
+    {
+     "name": "فينورد",
+     "aliases": [
+      "Feyenoord"
+     ]
+    },
+    {
+     "name": "أياكس",
+     "aliases": [
+      "Ajax"
+     ]
+    },
+    {
+     "name": "بايرن ميونخ",
+     "aliases": [
+      "Bayern Munich",
+      "بايرن"
+     ]
+    },
+    {
+     "name": "ليفربول",
+     "aliases": [
+      "Liverpool"
+     ]
+    },
+    {
+     "name": "نوتنغهام فورست",
+     "aliases": [
+      "Nottingham Forest"
+     ]
+    },
+    {
+     "name": "أستون فيلا",
+     "aliases": [
+      "Aston Villa"
+     ]
+    },
+    {
+     "name": "هامبورغ",
+     "aliases": [
+      "Hamburger SV",
+      "Hamburg"
+     ]
+    },
+    {
+     "name": "يوفنتوس",
+     "aliases": [
+      "Juventus"
+     ]
+    },
+    {
+     "name": "ستيوا بوخارست",
+     "aliases": [
+      "Steaua Bucharest",
+      "FCSB"
+     ]
+    },
+    {
+     "name": "بورتو",
+     "aliases": [
+      "Porto"
+     ]
+    },
+    {
+     "name": "آيندهوفن",
+     "aliases": [
+      "PSV Eindhoven",
+      "PSV",
+      "بي إس في"
+     ]
+    },
+    {
+     "name": "النجم الأحمر بلغراد",
+     "aliases": [
+      "Red Star Belgrade",
+      "ريد ستار"
+     ]
+    },
+    {
+     "name": "مارسيليا",
+     "aliases": [
+      "Marseille"
+     ]
+    },
+    {
+     "name": "برشلونة",
+     "aliases": [
+      "Barcelona"
+     ]
+    },
+    {
+     "name": "بوروسيا دورتموند",
+     "aliases": [
+      "Borussia Dortmund",
+      "دورتموند"
+     ]
+    },
+    {
+     "name": "تشيلسي",
+     "aliases": [
+      "Chelsea"
+     ]
+    },
+    {
+     "name": "مانشستر سيتي",
+     "aliases": [
+      "Manchester City"
+     ]
+    },
+    {
+     "name": "باريس سان جيرمان",
+     "aliases": [
+      "Paris Saint-Germain",
+      "PSG"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-euro-winners",
+   "category": "auction",
+   "difficulty": "expert",
+   "question": "كم منتخباً تستطيع أن تسمّي من المنتخبات الفائزة ببطولة أمم أوروبا (حتى نسخة 2024)؟",
+   "answer": "10 منتخبات",
+   "accepted_answers": [],
+   "topic": "أمم أوروبا",
+   "semantic_key": "euro|champion-nations|to-2024",
+   "sources": [
+    {
+     "title": "UEFA European Championship",
+     "url": "https://en.wikipedia.org/wiki/UEFA_European_Championship"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2024-07-14",
+   "items": [
+    {
+     "name": "الاتحاد السوفيتي",
+     "aliases": [
+      "Soviet Union",
+      "USSR"
+     ]
+    },
+    {
+     "name": "إسبانيا",
+     "aliases": [
+      "Spain"
+     ]
+    },
+    {
+     "name": "إيطاليا",
+     "aliases": [
+      "Italy"
+     ]
+    },
+    {
+     "name": "ألمانيا",
+     "aliases": [
+      "Germany",
+      "ألمانيا الغربية",
+      "West Germany"
+     ]
+    },
+    {
+     "name": "تشيكوسلوفاكيا",
+     "aliases": [
+      "Czechoslovakia"
+     ]
+    },
+    {
+     "name": "فرنسا",
+     "aliases": [
+      "France"
+     ]
+    },
+    {
+     "name": "هولندا",
+     "aliases": [
+      "Netherlands"
+     ]
+    },
+    {
+     "name": "الدنمارك",
+     "aliases": [
+      "Denmark"
+     ]
+    },
+    {
+     "name": "اليونان",
+     "aliases": [
+      "Greece"
+     ]
+    },
+    {
+     "name": "البرتغال",
+     "aliases": [
+      "Portugal"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-ucl-coaches-two-clubs",
+   "category": "auction",
+   "difficulty": "very_expert",
+   "question": "كم مدرباً تستطيع أن تسمّي ممن فازوا بكأس أوروبا / دوري أبطال أوروبا مع ناديين مختلفين (حتى نهائي 2025)؟",
+   "answer": "7 مدربين",
+   "accepted_answers": [],
+   "topic": "المدربون",
+   "semantic_key": "european-cup|coaches-won-with-two-clubs|to-2025",
+   "sources": [
+    {
+     "title": "List of European Cup and UEFA Champions League winning managers",
+     "url": "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_winning_managers"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2025-05-31",
+   "items": [
+    {
+     "name": "إرنست هابل",
+     "aliases": [
+      "Ernst Happel"
+     ]
+    },
+    {
+     "name": "أوتمار هيتسفيلد",
+     "aliases": [
+      "Ottmar Hitzfeld"
+     ]
+    },
+    {
+     "name": "جوزيه مورينيو",
+     "aliases": [
+      "José Mourinho",
+      "مورينيو"
+     ]
+    },
+    {
+     "name": "يوب هاينكس",
+     "aliases": [
+      "Jupp Heynckes"
+     ]
+    },
+    {
+     "name": "كارلو أنشيلوتي",
+     "aliases": [
+      "Carlo Ancelotti",
+      "أنشيلوتي"
+     ]
+    },
+    {
+     "name": "بيب غوارديولا",
+     "aliases": [
+      "Pep Guardiola",
+      "غوارديولا"
+     ]
+    },
+    {
+     "name": "لويس إنريكي",
+     "aliases": [
+      "Luis Enrique"
+     ]
+    }
+   ],
+   "items_exhaustive": false
+  },
+  {
+   "id": "seed-auc-pl-champions",
+   "category": "auction",
+   "difficulty": "expert",
+   "question": "كم نادياً تستطيع أن تسمّي من الأندية التي توّجت بلقب الدوري الإنجليزي الممتاز منذ انطلاقه عام 1992 (حتى موسم 2024-2025)؟",
+   "answer": "7 أندية",
+   "accepted_answers": [],
+   "topic": "الدوري الإنجليزي",
+   "semantic_key": "premier-league|champion-clubs|1992-2025",
+   "sources": [
+    {
+     "title": "List of English football champions",
+     "url": "https://en.wikipedia.org/wiki/List_of_English_football_champions"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2025-05-25",
+   "items": [
+    {
+     "name": "مانشستر يونايتد",
+     "aliases": [
+      "Manchester United"
+     ]
+    },
+    {
+     "name": "بلاكبيرن روفرز",
+     "aliases": [
+      "Blackburn Rovers",
+      "بلاكبيرن"
+     ]
+    },
+    {
+     "name": "أرسنال",
+     "aliases": [
+      "Arsenal"
+     ]
+    },
+    {
+     "name": "تشيلسي",
+     "aliases": [
+      "Chelsea"
+     ]
+    },
+    {
+     "name": "مانشستر سيتي",
+     "aliases": [
+      "Manchester City"
+     ]
+    },
+    {
+     "name": "ليستر سيتي",
+     "aliases": [
+      "Leicester City",
+      "ليستر"
+     ]
+    },
+    {
+     "name": "ليفربول",
+     "aliases": [
+      "Liverpool"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-wc-double-hosts",
+   "category": "auction",
+   "difficulty": "historic",
+   "question": "كم دولة تستطيع أن تسمّي من الدول التي استضافت كأس العالم أكثر من مرة (حتى نسخة 2022)؟",
+   "answer": "5 دول",
+   "accepted_answers": [],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup|countries-hosted-twice|to-2022",
+   "sources": [
+    {
+     "title": "FIFA World Cup hosts",
+     "url": "https://en.wikipedia.org/wiki/FIFA_World_Cup_hosts"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2022-12-18",
+   "items": [
+    {
+     "name": "المكسيك",
+     "aliases": [
+      "Mexico"
+     ]
+    },
+    {
+     "name": "إيطاليا",
+     "aliases": [
+      "Italy"
+     ]
+    },
+    {
+     "name": "فرنسا",
+     "aliases": [
+      "France"
+     ]
+    },
+    {
+     "name": "ألمانيا",
+     "aliases": [
+      "Germany",
+      "ألمانيا الغربية"
+     ]
+    },
+    {
+     "name": "البرازيل",
+     "aliases": [
+      "Brazil"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-africa-wc-qf",
+   "category": "auction",
+   "difficulty": "expert",
+   "question": "كم منتخباً أفريقياً تستطيع أن تسمّي ممن بلغوا ربع نهائي كأس العالم أو أبعد (حتى نسخة 2022)؟",
+   "answer": "4 منتخبات",
+   "accepted_answers": [],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup|african-quarter-finalists|to-2022",
+   "sources": [
+    {
+     "title": "African nations at the FIFA World Cup",
+     "url": "https://en.wikipedia.org/wiki/African_nations_at_the_FIFA_World_Cup"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2022-12-18",
+   "items": [
+    {
+     "name": "الكاميرون",
+     "aliases": [
+      "Cameroon"
+     ]
+    },
+    {
+     "name": "السنغال",
+     "aliases": [
+      "Senegal"
+     ]
+    },
+    {
+     "name": "غانا",
+     "aliases": [
+      "Ghana"
+     ]
+    },
+    {
+     "name": "المغرب",
+     "aliases": [
+      "Morocco"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-ballon-dor-barca",
+   "category": "auction",
+   "difficulty": "very_expert",
+   "question": "كم لاعباً تستطيع أن تسمّي ممن فازوا بالكرة الذهبية وهم لاعبون في برشلونة وقت التتويج (حتى نسخة 2024)؟",
+   "answer": "6 لاعبين",
+   "accepted_answers": [],
+   "topic": "الكرة الذهبية",
+   "semantic_key": "ballon-dor|winners-while-at-barcelona|to-2024",
+   "sources": [
+    {
+     "title": "Ballon d'Or",
+     "url": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2024-10-28",
+   "items": [
+    {
+     "name": "لويس سواريز ميرامونتيس",
+     "aliases": [
+      "Luis Suárez Miramontes",
+      "لويس سواريز (1960)"
+     ]
+    },
+    {
+     "name": "يوهان كرويف",
+     "aliases": [
+      "Johan Cruyff",
+      "كرويف"
+     ]
+    },
+    {
+     "name": "هريستو ستويتشكوف",
+     "aliases": [
+      "Hristo Stoichkov",
+      "ستويتشكوف"
+     ]
+    },
+    {
+     "name": "ريفالدو",
+     "aliases": [
+      "Rivaldo"
+     ]
+    },
+    {
+     "name": "رونالدينيو",
+     "aliases": [
+      "Ronaldinho"
+     ]
+    },
+    {
+     "name": "ليونيل ميسي",
+     "aliases": [
+      "Lionel Messi",
+      "ميسي"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-auc-ballon-dor-3plus",
+   "category": "auction",
+   "difficulty": "very_expert",
+   "question": "كم لاعباً تستطيع أن تسمّي ممن فازوا بالكرة الذهبية ثلاث مرات أو أكثر (حتى نسخة 2025)؟",
+   "answer": "5 لاعبين",
+   "accepted_answers": [],
+   "topic": "الكرة الذهبية",
+   "semantic_key": "ballon-dor|three-or-more-wins|to-2025",
+   "sources": [
+    {
+     "title": "Ballon d'Or",
+     "url": "https://en.wikipedia.org/wiki/Ballon_d%27Or"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "fact_as_of": "2025-09-22",
+   "items": [
+    {
+     "name": "يوهان كرويف",
+     "aliases": [
+      "Johan Cruyff"
+     ]
+    },
+    {
+     "name": "ميشيل بلاتيني",
+     "aliases": [
+      "Michel Platini",
+      "بلاتيني"
+     ]
+    },
+    {
+     "name": "ماركو فان باستن",
+     "aliases": [
+      "Marco van Basten",
+      "فان باستن"
+     ]
+    },
+    {
+     "name": "ليونيل ميسي",
+     "aliases": [
+      "Lionel Messi",
+      "ميسي"
+     ]
+    },
+    {
+     "name": "كريستيانو رونالدو",
+     "aliases": [
+      "Cristiano Ronaldo",
+      "رونالدو"
+     ]
+    }
+   ],
+   "items_exhaustive": true
+  },
+  {
+   "id": "seed-wdyk-euro2000-golden-goal",
+   "category": "wdyk",
+   "difficulty": "expert",
+   "question": "من سجّل الهدف الذهبي الذي حسم نهائي أمم أوروبا 2000 لصالح فرنسا أمام إيطاليا؟",
+   "answer": "دافيد تريزيغيه",
+   "accepted_answers": [
+    "David Trezeguet",
+    "تريزيغيه",
+    "تريزيجيه"
+   ],
+   "topic": "أمم أوروبا",
+   "semantic_key": "euro-2000-final|golden-goal-scorer",
+   "sources": [
+    {
+     "title": "UEFA Euro 2000 final",
+     "url": "https://en.wikipedia.org/wiki/UEFA_Euro_2000_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-forest-first-ec",
+   "category": "wdyk",
+   "difficulty": "historic",
+   "question": "في أي عام توّج نوتنغهام فورست بأول ألقابه في كأس أوروبا للأندية البطلة؟",
+   "answer": "1979",
+   "accepted_answers": [
+    "عام 1979"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "nottingham-forest|first-european-cup-year",
+   "sources": [
+    {
+     "title": "1979 European Cup final",
+     "url": "https://en.wikipedia.org/wiki/1979_European_Cup_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-greece-2004-coach",
+   "category": "wdyk",
+   "difficulty": "expert",
+   "question": "من المدرب الألماني الذي قاد اليونان إلى لقب أمم أوروبا 2004؟",
+   "answer": "أوتو ريهاغل",
+   "accepted_answers": [
+    "Otto Rehhagel",
+    "ريهاغل"
+   ],
+   "topic": "المدربون",
+   "semantic_key": "euro-2004|greece-coach",
+   "sources": [
+    {
+     "title": "UEFA Euro 2004",
+     "url": "https://en.wikipedia.org/wiki/UEFA_Euro_2004"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-steaua-1986-opponent",
+   "category": "wdyk",
+   "difficulty": "historic",
+   "question": "أمام أي نادٍ فاز ستيوا بوخارست بنهائي كأس أوروبا للأندية البطلة 1986 بركلات الترجيح؟",
+   "answer": "برشلونة",
+   "accepted_answers": [
+    "Barcelona",
+    "FC Barcelona"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "european-cup-1986-final|runner-up",
+   "sources": [
+    {
+     "title": "1986 European Cup final",
+     "url": "https://en.wikipedia.org/wiki/1986_European_Cup_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-fontaine-1958",
+   "category": "wdyk",
+   "difficulty": "historic",
+   "question": "كم هدفاً سجّل الفرنسي جوست فونتين في نسخة كأس العالم 1958، وهو رقم قياسي لنسخة واحدة؟",
+   "answer": "13 هدفاً",
+   "accepted_answers": [
+    "13",
+    "ثلاثة عشر"
+   ],
+   "topic": "الأرقام القياسية",
+   "semantic_key": "world-cup-1958|just-fontaine-goals",
+   "sources": [
+    {
+     "title": "Just Fontaine",
+     "url": "https://en.wikipedia.org/wiki/Just_Fontaine"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-1961-final-opponent",
+   "category": "wdyk",
+   "difficulty": "historic",
+   "question": "أنهى بنفيكا هيمنة ريال مدريد بالفوز بكأس أوروبا 1961؛ من الفريق الذي هزمه بنفيكا 3-2 في ذلك النهائي؟",
+   "answer": "برشلونة",
+   "accepted_answers": [
+    "Barcelona",
+    "FC Barcelona"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "european-cup-1961-final|runner-up",
+   "sources": [
+    {
+     "title": "1961 European Cup final",
+     "url": "https://en.wikipedia.org/wiki/1961_European_Cup_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-matthaus-wcs",
+   "category": "wdyk",
+   "difficulty": "expert",
+   "question": "في كم نسخة من كأس العالم شارك لوثار ماتيوس لاعباً؟",
+   "answer": "5 نسخ",
+   "accepted_answers": [
+    "5",
+    "خمس",
+    "خمسة"
+   ],
+   "topic": "المسيرات",
+   "semantic_key": "lothar-matthaus|world-cup-tournaments-played",
+   "sources": [
+    {
+     "title": "Lothar Matthäus",
+     "url": "https://en.wikipedia.org/wiki/Lothar_Matth%C3%A4us"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-ballon-dor-2004",
+   "category": "wdyk",
+   "difficulty": "expert",
+   "question": "من اللاعب الأوكراني الفائز بالكرة الذهبية عام 2004؟",
+   "answer": "أندريه شيفتشينكو",
+   "accepted_answers": [
+    "Andriy Shevchenko",
+    "شيفتشينكو"
+   ],
+   "topic": "الكرة الذهبية",
+   "semantic_key": "ballon-dor-2004|winner",
+   "sources": [
+    {
+     "title": "2004 Ballon d'Or",
+     "url": "https://en.wikipedia.org/wiki/2004_Ballon_d%27Or"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-invincibles-wins",
+   "category": "wdyk",
+   "difficulty": "very_expert",
+   "question": "أنهى أرسنال موسم 2003-2004 في الدوري الإنجليزي دون أي خسارة؛ كم مباراة فاز بها في ذلك الموسم؟",
+   "answer": "26 فوزاً",
+   "accepted_answers": [
+    "26",
+    "ستة وعشرون"
+   ],
+   "topic": "الدوري الإنجليزي",
+   "semantic_key": "arsenal-2003-04|league-wins",
+   "sources": [
+    {
+     "title": "2003–04 Arsenal F.C. season",
+     "url": "https://en.wikipedia.org/wiki/2003%E2%80%9304_Arsenal_F.C._season"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-klose-goals",
+   "category": "wdyk",
+   "difficulty": "expert",
+   "question": "كم هدفاً سجّل ميروسلاف كلوزه في نهائيات كأس العالم، وهو الرقم القياسي التاريخي؟",
+   "answer": "16 هدفاً",
+   "accepted_answers": [
+    "16",
+    "ستة عشر"
+   ],
+   "topic": "الأرقام القياسية",
+   "semantic_key": "world-cup|all-time-top-scorer-goals",
+   "sources": [
+    {
+     "title": "Miroslav Klose",
+     "url": "https://en.wikipedia.org/wiki/Miroslav_Klose"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-ronaldo-2003-from",
+   "category": "wdyk",
+   "difficulty": "hard",
+   "question": "من أي نادٍ انتقل كريستيانو رونالدو إلى مانشستر يونايتد عام 2003؟",
+   "answer": "سبورتينغ لشبونة",
+   "accepted_answers": [
+    "Sporting CP",
+    "سبورتينغ",
+    "Sporting Lisbon"
+   ],
+   "topic": "الانتقالات",
+   "semantic_key": "cristiano-ronaldo|club-before-manchester-united",
+   "sources": [
+    {
+     "title": "Cristiano Ronaldo",
+     "url": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-1999-winner",
+   "category": "wdyk",
+   "difficulty": "expert",
+   "question": "من سجّل هدف الفوز لمانشستر يونايتد في الوقت بدل الضائع من نهائي دوري أبطال أوروبا 1999 أمام بايرن ميونخ؟",
+   "answer": "أولي غونار سولشاير",
+   "accepted_answers": [
+    "Ole Gunnar Solskjær",
+    "Solskjaer",
+    "سولشاير"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "ucl-1999-final|winning-goal-scorer",
+   "sources": [
+    {
+     "title": "1999 UEFA Champions League final",
+     "url": "https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-leicester-coach",
+   "category": "wdyk",
+   "difficulty": "hard",
+   "question": "من المدرب الذي قاد ليستر سيتي إلى لقب الدوري الإنجليزي الممتاز موسم 2015-2016؟",
+   "answer": "كلاوديو رانييري",
+   "accepted_answers": [
+    "Claudio Ranieri",
+    "رانييري"
+   ],
+   "topic": "المدربون",
+   "semantic_key": "leicester-2015-16|title-winning-coach",
+   "sources": [
+    {
+     "title": "2015–16 Leicester City F.C. season",
+     "url": "https://en.wikipedia.org/wiki/2015%E2%80%9316_Leicester_City_F.C._season"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-wdyk-first-pl-goal",
+   "category": "wdyk",
+   "difficulty": "very_expert",
+   "question": "من سجّل أول هدف في تاريخ الدوري الإنجليزي الممتاز في أغسطس 1992؟",
+   "answer": "براين دين",
+   "accepted_answers": [
+    "Brian Deane",
+    "دين"
+   ],
+   "topic": "الدوري الإنجليزي",
+   "semantic_key": "premier-league|first-ever-goal-scorer",
+   "sources": [
+    {
+     "title": "Brian Deane",
+     "url": "https://en.wikipedia.org/wiki/Brian_Deane"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-duckadam",
+   "category": "buzzer",
+   "difficulty": "very_expert",
+   "question": "حارس روماني تصدّى لأربع ركلات ترجيح متتالية في نهائي كأس أوروبا 1986. من هو؟",
+   "answer": "هيلموت دوكادام",
+   "accepted_answers": [
+    "Helmuth Duckadam",
+    "دوكادام"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "european-cup-1986-final|penalty-saving-goalkeeper",
+   "sources": [
+    {
+     "title": "1986 European Cup final",
+     "url": "https://en.wikipedia.org/wiki/1986_European_Cup_final"
+    },
+    {
+     "title": "Helmuth Duckadam",
+     "url": "https://en.wikipedia.org/wiki/Helmuth_Duckadam"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-istanbul-stadium",
+   "category": "buzzer",
+   "difficulty": "expert",
+   "question": "على أي ملعب أقيم نهائي إسطنبول الشهير 2005 بين ليفربول وميلان؟",
+   "answer": "ملعب أتاتورك الأولمبي",
+   "accepted_answers": [
+    "Atatürk Olympic Stadium",
+    "أتاتورك"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "ucl-2005-final|stadium",
+   "sources": [
+    {
+     "title": "2005 UEFA Champions League final",
+     "url": "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-cannavaro",
+   "category": "buzzer",
+   "difficulty": "expert",
+   "question": "مدافع قاد إيطاليا لرفع كأس العالم في ألمانيا، ثم نال الكرة الذهبية في العام نفسه. من هو؟",
+   "answer": "فابيو كانافارو",
+   "accepted_answers": [
+    "Fabio Cannavaro",
+    "كانافارو"
+   ],
+   "topic": "الكرة الذهبية",
+   "semantic_key": "ballon-dor-2006|winner",
+   "sources": [
+    {
+     "title": "2006 Ballon d'Or",
+     "url": "https://en.wikipedia.org/wiki/2006_Ballon_d%27Or"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-first-pl-champion",
+   "category": "buzzer",
+   "difficulty": "hard",
+   "question": "أي نادٍ توّج بأول نسخة من الدوري الإنجليزي الممتاز (موسم 1992-1993)؟",
+   "answer": "مانشستر يونايتد",
+   "accepted_answers": [
+    "Manchester United",
+    "مان يونايتد"
+   ],
+   "topic": "الدوري الإنجليزي",
+   "semantic_key": "premier-league-1992-93|champion",
+   "sources": [
+    {
+     "title": "1992–93 FA Premier League",
+     "url": "https://en.wikipedia.org/wiki/1992%E2%80%9393_FA_Premier_League"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-2014-top-scorer",
+   "category": "buzzer",
+   "difficulty": "expert",
+   "question": "من هدّاف كأس العالم 2014 في البرازيل برصيد 6 أهداف؟",
+   "answer": "خاميس رودريغيز",
+   "accepted_answers": [
+    "James Rodríguez",
+    "جيمس رودريغيز",
+    "خاميس"
+   ],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup-2014|golden-boot",
+   "sources": [
+    {
+     "title": "2014 FIFA World Cup",
+     "url": "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-porto-2004",
+   "category": "buzzer",
+   "difficulty": "hard",
+   "question": "أي فريق فاز بنهائي دوري أبطال أوروبا 2004 على موناكو بثلاثية نظيفة؟",
+   "answer": "بورتو",
+   "accepted_answers": [
+    "Porto",
+    "FC Porto"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "ucl-2004-final|winner",
+   "sources": [
+    {
+     "title": "2004 UEFA Champions League final",
+     "url": "https://en.wikipedia.org/wiki/2004_UEFA_Champions_League_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-gotze-2014",
+   "category": "buzzer",
+   "difficulty": "hard",
+   "question": "من سجّل هدف الفوز الوحيد لألمانيا في نهائي كأس العالم 2014 أمام الأرجنتين؟",
+   "answer": "ماريو غوتزه",
+   "accepted_answers": [
+    "Mario Götze",
+    "غوتسه",
+    "جوتزه"
+   ],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup-2014-final|winning-goal-scorer",
+   "sources": [
+    {
+     "title": "2014 FIFA World Cup final",
+     "url": "https://en.wikipedia.org/wiki/2014_FIFA_World_Cup_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-brehme-1990",
+   "category": "buzzer",
+   "difficulty": "expert",
+   "question": "من سجّل ركلة الجزاء التي منحت ألمانيا الغربية لقب كأس العالم 1990 في النهائي أمام الأرجنتين؟",
+   "answer": "أندرياس بريمه",
+   "accepted_answers": [
+    "Andreas Brehme",
+    "بريمه"
+   ],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup-1990-final|winning-goal-scorer",
+   "sources": [
+    {
+     "title": "1990 FIFA World Cup final",
+     "url": "https://en.wikipedia.org/wiki/1990_FIFA_World_Cup_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-kluivert-1995",
+   "category": "buzzer",
+   "difficulty": "very_expert",
+   "question": "من سجّل هدف فوز أياكس على ميلان في نهائي دوري أبطال أوروبا 1995؟",
+   "answer": "باتريك كلويفرت",
+   "accepted_answers": [
+    "Patrick Kluivert",
+    "كلويفرت"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "ucl-1995-final|winning-goal-scorer",
+   "sources": [
+    {
+     "title": "1995 UEFA Champions League final",
+     "url": "https://en.wikipedia.org/wiki/1995_UEFA_Champions_League_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-zidane-2002-opponent",
+   "category": "buzzer",
+   "difficulty": "expert",
+   "question": "أمام أي فريق سجّل زين الدين زيدان هدفه الطائر الشهير في نهائي دوري أبطال أوروبا 2002؟",
+   "answer": "باير ليفركوزن",
+   "accepted_answers": [
+    "Bayer Leverkusen",
+    "ليفركوزن"
+   ],
+   "topic": "دوري أبطال أوروبا",
+   "semantic_key": "ucl-2002-final|runner-up",
+   "sources": [
+    {
+     "title": "2002 UEFA Champions League final",
+     "url": "https://en.wikipedia.org/wiki/2002_UEFA_Champions_League_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-shilton-1986",
+   "category": "buzzer",
+   "difficulty": "very_expert",
+   "question": "من حارس المرمى الإنجليزي الذي سجّل مارادونا في مرماه هدف «يد الله» عام 1986؟",
+   "answer": "بيتر شيلتون",
+   "accepted_answers": [
+    "Peter Shilton",
+    "شيلتون"
+   ],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup-1986-qf|england-goalkeeper-hand-of-god",
+   "sources": [
+    {
+     "title": "Argentina v England (1986 FIFA World Cup)",
+     "url": "https://en.wikipedia.org/wiki/Argentina_v_England_(1986_FIFA_World_Cup)"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-buz-iniesta-2010",
+   "category": "buzzer",
+   "difficulty": "hard",
+   "question": "من سجّل هدف إسبانيا الوحيد في نهائي كأس العالم 2010 أمام هولندا؟",
+   "answer": "أندريس إنييستا",
+   "accepted_answers": [
+    "Andrés Iniesta",
+    "إنييستا",
+    "انيستا"
+   ],
+   "topic": "كأس العالم",
+   "semantic_key": "world-cup-2010-final|winning-goal-scorer",
+   "sources": [
+    {
+     "title": "2010 FIFA World Cup final",
+     "url": "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup_final"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed"
+  },
+  {
+   "id": "seed-who-figo",
+   "category": "whoami",
+   "difficulty": "expert",
+   "question": "من أنا؟",
+   "answer": "لويس فيغو",
+   "accepted_answers": [
+    "Luís Figo",
+    "فيغو",
+    "فيجو"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:luis-figo",
+   "sources": [
+    {
+     "title": "Luís Figo",
+     "url": "https://en.wikipedia.org/wiki/Lu%C3%ADs_Figo"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي الاحترافية في سبورتينغ لشبونة.",
+    "انتقلت إلى برشلونة عام 1995.",
+    "أنهيت مسيرتي في إنتر ميلان.",
+    "انتقالي إلى ريال مدريد عام 2000 كان من أكثر الصفقات إثارة للجدل في التاريخ.",
+    "فزت بالكرة الذهبية عام 2000 وأنا برتغالي."
+   ]
+  },
+  {
+   "id": "seed-who-ronaldinho",
+   "category": "whoami",
+   "difficulty": "hard",
+   "question": "من أنا؟",
+   "answer": "رونالدينيو",
+   "accepted_answers": [
+    "Ronaldinho",
+    "رونالدينهو"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:ronaldinho",
+   "sources": [
+    {
+     "title": "Ronaldinho",
+     "url": "https://en.wikipedia.org/wiki/Ronaldinho"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي في نادي غريميو البرازيلي.",
+    "لعبت لباريس سان جيرمان بين 2001 و2003.",
+    "توّجت بكأس العالم 2002.",
+    "انضممت إلى برشلونة عام 2003.",
+    "فزت بالكرة الذهبية عام 2005."
+   ]
+  },
+  {
+   "id": "seed-who-henry",
+   "category": "whoami",
+   "difficulty": "expert",
+   "question": "من أنا؟",
+   "answer": "تييري هنري",
+   "accepted_answers": [
+    "Thierry Henry",
+    "هنري"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:thierry-henry",
+   "sources": [
+    {
+     "title": "Thierry Henry",
+     "url": "https://en.wikipedia.org/wiki/Thierry_Henry"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي الاحترافية في موناكو.",
+    "لعبت فترة قصيرة مع يوفنتوس عام 1999.",
+    "توّجت بكأس العالم 1998 مع بلادي.",
+    "فزت بدوري أبطال أوروبا مع برشلونة عام 2009.",
+    "أنا الهداف التاريخي لأرسنال."
+   ]
+  },
+  {
+   "id": "seed-who-pirlo",
+   "category": "whoami",
+   "difficulty": "expert",
+   "question": "من أنا؟",
+   "answer": "أندريا بيرلو",
+   "accepted_answers": [
+    "Andrea Pirlo",
+    "بيرلو"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:andrea-pirlo",
+   "sources": [
+    {
+     "title": "Andrea Pirlo",
+     "url": "https://en.wikipedia.org/wiki/Andrea_Pirlo"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي في بريشيا.",
+    "لعبت لإنتر قبل أن أنتقل إلى غريمه في المدينة نفسها عام 2001.",
+    "أنهيت مسيرتي في نيويورك سيتي.",
+    "انتقلت إلى يوفنتوس عام 2011 بعد عشر سنوات في ميلان.",
+    "صانع ألعاب توّج بكأس العالم 2006 مع إيطاليا."
+   ]
+  },
+  {
+   "id": "seed-who-etoo",
+   "category": "whoami",
+   "difficulty": "very_expert",
+   "question": "من أنا؟",
+   "answer": "صامويل إيتو",
+   "accepted_answers": [
+    "Samuel Eto'o",
+    "إيتو"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:samuel-etoo",
+   "sources": [
+    {
+     "title": "Samuel Eto'o",
+     "url": "https://en.wikipedia.org/wiki/Samuel_Eto%27o"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "انتقلت شاباً إلى ريال مدريد لكنني لم أثبت مكاني فيه.",
+    "تألقت مع مايوركا قبل الانتقال إلى برشلونة عام 2004.",
+    "حققت الثلاثية مع برشلونة 2009 ثم مع إنتر ميلان 2010.",
+    "أنا الهداف التاريخي لمنتخب الكاميرون."
+   ]
+  },
+  {
+   "id": "seed-who-mourinho",
+   "category": "whoami",
+   "difficulty": "hard",
+   "question": "من أنا؟",
+   "answer": "جوزيه مورينيو",
+   "accepted_answers": [
+    "José Mourinho",
+    "مورينيو"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:jose-mourinho",
+   "sources": [
+    {
+     "title": "José Mourinho",
+     "url": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mourinho"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "عملت مترجماً ومساعداً للمدرب بوبي روبسون.",
+    "فزت بكأس الاتحاد الأوروبي 2003 ثم بدوري الأبطال 2004 مع بورتو.",
+    "حققت الثلاثية مع إنتر ميلان عام 2010.",
+    "فزت بأول نسخة من دوري المؤتمر الأوروبي مع روما 2022.",
+    "وصفت نفسي بـ«المميز» عند وصولي إلى تشيلسي عام 2004."
+   ]
+  },
+  {
+   "id": "seed-who-klopp",
+   "category": "whoami",
+   "difficulty": "hard",
+   "question": "من أنا؟",
+   "answer": "يورغن كلوب",
+   "accepted_answers": [
+    "Jürgen Klopp",
+    "كلوب"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:jurgen-klopp",
+   "sources": [
+    {
+     "title": "Jürgen Klopp",
+     "url": "https://en.wikipedia.org/wiki/J%C3%BCrgen_Klopp"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "قضيت معظم مسيرتي لاعباً في ماينز ثم أصبحت مدربه.",
+    "فزت بالدوري الألماني مرتين متتاليتين 2011 و2012.",
+    "قدت دورتموند إلى نهائي دوري الأبطال 2013.",
+    "فزت بدوري أبطال أوروبا 2019 والدوري الإنجليزي 2020 مع ليفربول."
+   ]
+  },
+  {
+   "id": "seed-who-buffon",
+   "category": "whoami",
+   "difficulty": "expert",
+   "question": "من أنا؟",
+   "answer": "جانلويجي بوفون",
+   "accepted_answers": [
+    "Gianluigi Buffon",
+    "بوفون"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:gianluigi-buffon",
+   "sources": [
+    {
+     "title": "Gianluigi Buffon",
+     "url": "https://en.wikipedia.org/wiki/Gianluigi_Buffon"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي الاحترافية مع بارما عام 1995.",
+    "كان انتقالي عام 2001 الأغلى لحارس مرمى في ذلك الوقت.",
+    "بقيت مع ناديي عند هبوطه إلى الدرجة الثانية عام 2006.",
+    "لعبت موسماً واحداً مع باريس سان جيرمان 2018-2019.",
+    "حارس مرمى إيطاليا المتوج بكأس العالم 2006."
+   ]
+  },
+  {
+   "id": "seed-who-kaka",
+   "category": "whoami",
+   "difficulty": "hard",
+   "question": "من أنا؟",
+   "answer": "كاكا",
+   "accepted_answers": [
+    "Kaká",
+    "ريكاردو كاكا",
+    "Ricardo Kaká"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:kaka",
+   "sources": [
+    {
+     "title": "Kaká",
+     "url": "https://en.wikipedia.org/wiki/Kak%C3%A1"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي في ساو باولو.",
+    "لعبت لأورلاندو سيتي في الدوري الأمريكي.",
+    "انتقلت إلى ريال مدريد عام 2009.",
+    "انضممت إلى ميلان عام 2003.",
+    "فزت بدوري الأبطال والكرة الذهبية عام 2007."
+   ]
+  },
+  {
+   "id": "seed-who-drogba",
+   "category": "whoami",
+   "difficulty": "expert",
+   "question": "من أنا؟",
+   "answer": "ديدييه دروغبا",
+   "accepted_answers": [
+    "Didier Drogba",
+    "دروغبا",
+    "دروجبا"
+   ],
+   "topic": "من أنا؟",
+   "semantic_key": "person:didier-drogba",
+   "sources": [
+    {
+     "title": "Didier Drogba",
+     "url": "https://en.wikipedia.org/wiki/Didier_Drogba"
+    }
+   ],
+   "created_at": "2026-11-15T00:00:00Z",
+   "verification": {
+    "status": "curated",
+    "method": "manual-curation",
+    "notes": "حزمة البداية المكتوبة يدوياً — معلومات تاريخية ثابتة مع رابط مرجعي للحكم. ليست ناتجة عن تحقق آلي."
+   },
+   "origin": "seed",
+   "clues": [
+    "بدأت مسيرتي الاحترافية في لومان الفرنسي.",
+    "لعبت لغانغان ثم مارسيليا قبل انتقالي الكبير عام 2004.",
+    "لعبت في الصين وتركيا لاحقاً.",
+    "سجلت هدف التعادل وركلة الترجيح الحاسمة في نهائي دوري الأبطال 2012.",
+    "أسطورة تشيلسي وكوت ديفوار."
+   ]
+  }
+ ]
+}

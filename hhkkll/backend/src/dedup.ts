@@ -109,7 +109,8 @@ export function textFingerprint(q: Pick<Question, "category" | "question" | "clu
   return sha1(`txt:${sortCodeUnits([...new Set(contentTokens(fingerprintText(q)))]).join(" ")}`);
 }
 
-export function answerKeys(q: Pick<Question, "answer" | "accepted_answers">): Set<string> {
+export function answerKeys(q: Pick<Question, "answer" | "accepted_answers"> & { category?: string }): Set<string> {
+  if (q.category === "auction") return new Set();
   return new Set([q.answer, ...(q.accepted_answers ?? [])].map(normalizeAnswer).filter((s) => s.length > 0));
 }
 
@@ -132,6 +133,7 @@ export interface DedupEntry {
   trigrams: Set<string>;
   numbers: Set<string>;
   semanticKey: string;
+  factKey: string;
   answer: string;
 }
 
@@ -147,6 +149,7 @@ export function entryOf(q: Question): DedupEntry {
     trigrams: trigrams(ft),
     numbers: numberTokens(ft),
     semanticKey: q.semantic_key,
+    factKey: normalizeText(q.semantic_key ?? ""),
     answer: q.answer,
   };
 }
@@ -157,7 +160,13 @@ export interface DuplicateReason {
   score?: number;
 }
 
-export const THRESHOLDS = { nearIdenticalText: 0.72, sameAnswerText: 0.3, auctionItemOverlap: 0.6 };
+export const THRESHOLDS = {
+  nearIdenticalText: 0.72,
+  sameAnswerText: 0.3,
+  auctionItemOverlap: 0.6,
+  sameAnswerDifferentKeyText: 0.55,
+  nearIdenticalDifferentAnswer: 0.9,
+};
 
 export class DedupIndex {
   private byId = new Map<string, DedupEntry>();
@@ -188,14 +197,19 @@ export class DedupIndex {
     for (const e of this.byId.values()) {
       const sim = jaccard(c.trigrams, e.trigrams);
       const sameNumbers = c.numbers.size === e.numbers.size && [...c.numbers].every((n) => e.numbers.has(n));
-      if (sim >= THRESHOLDS.nearIdenticalText && sameNumbers) {
-        return { code: "near-identical-wording", otherId: e.id, score: sim };
-      }
       let sameAnswer = false;
       for (const a of c.answerKeys) if (e.answerKeys.has(a)) sameAnswer = true;
+      if (
+        sameNumbers &&
+        (sim >= THRESHOLDS.nearIdenticalDifferentAnswer || (sim >= THRESHOLDS.nearIdenticalText && sameAnswer))
+      ) {
+        return { code: "near-identical-wording", otherId: e.id, score: sim };
+      }
+      const differentKeys = c.factKey !== "" && e.factKey !== "" && c.factKey !== e.factKey;
       if (sameAnswer) {
         if (c.category === "whoami" && e.category === "whoami") return { code: "same-riddle-subject", otherId: e.id };
-        if (sim >= THRESHOLDS.sameAnswerText) return { code: "same-answer-similar-question", otherId: e.id, score: sim };
+        const need = differentKeys ? THRESHOLDS.sameAnswerDifferentKeyText : THRESHOLDS.sameAnswerText;
+        if (sim >= need && sameNumbers) return { code: "same-answer-similar-question", otherId: e.id, score: sim };
       }
       if (c.itemKeys.size >= 3 && e.itemKeys.size >= 3) {
         const overlap = jaccard(c.itemKeys, e.itemKeys);

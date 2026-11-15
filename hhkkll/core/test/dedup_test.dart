@@ -118,6 +118,12 @@ void main() {
       expect(idx.check(q('2', 'من فاز بالكرة الذهبية عام 2006؟', 'كانافارو')), isNull);
     });
 
+    test('accepts the same answer for a different year', () {
+      final idx = DedupIndex()
+        ..addQuestion(q('1', 'من بطل الدوري الإنجليزي الممتاز موسم 2007-2008؟', 'مانشستر يونايتد'));
+      expect(idx.check(q('2', 'من بطل الدوري الإنجليزي الممتاز موسم 2008-2009؟', 'مانشستر يونايتد')), isNull);
+    });
+
     test('accepts different questions that share an answer', () {
       final idx = DedupIndex()
         ..addQuestion(q('1', 'أمام أي نادٍ فاز ستيوا بوخارست بنهائي 1986 بركلات الترجيح؟', 'برشلونة'));

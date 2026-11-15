@@ -20,6 +20,8 @@ class DedupThresholds {
     this.nearIdenticalText = 0.72,
     this.sameAnswerText = 0.30,
     this.auctionItemOverlap = 0.60,
+    this.sameAnswerDifferentKeyText = 0.55,
+    this.nearIdenticalDifferentAnswer = 0.90,
   });
 
   /// Two questions whose wording is this similar are duplicates whatever the
@@ -33,6 +35,14 @@ class DedupThresholds {
   /// Two auction questions whose valid-answer lists overlap this much are the
   /// same challenge.
   final double auctionItemOverlap;
+
+  /// Same-answer threshold when both questions declare different fact keys
+  /// (they claim to test different facts, so ask for stronger evidence).
+  final double sameAnswerDifferentKeyText;
+
+  /// Wording similarity at which two questions are duplicates even though
+  /// their answers differ (a rephrase that changed the answer spelling).
+  final double nearIdenticalDifferentAnswer;
 }
 
 /// Compact record of a question kept in history (no full text needed beyond
@@ -47,6 +57,7 @@ class DedupEntry {
     required this.itemKeys,
     required this.trigrams,
     this.numbers = const {},
+    this.factKey = '',
   });
 
   factory DedupEntry.of(Question q) => DedupEntry(
@@ -58,6 +69,7 @@ class DedupEntry {
         itemKeys: q.itemKeys,
         trigrams: q.textTrigrams,
         numbers: numberTokens(q.fingerprintText),
+        factKey: normalizeText(q.semanticKey),
       );
 
   final String id;
@@ -69,6 +81,9 @@ class DedupEntry {
   final Set<String> trigrams;
   final Set<String> numbers;
 
+  /// Normalised semantic key ('' when the question has none).
+  final String factKey;
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'c': category.code,
@@ -78,6 +93,7 @@ class DedupEntry {
         'i': itemKeys.toList(),
         'g': trigrams.toList(),
         'n': numbers.toList(),
+        if (factKey.isNotEmpty) 'k': factKey,
       };
 
   factory DedupEntry.fromJson(Map<String, dynamic> j) => DedupEntry(
@@ -89,6 +105,7 @@ class DedupEntry {
         itemKeys: (j['i'] as List).cast<String>().toSet(),
         trigrams: (j['g'] as List).cast<String>().toSet(),
         numbers: (j['n'] as List? ?? const []).cast<String>().toSet(),
+        factKey: j['k'] as String? ?? '',
       );
 }
 
@@ -121,17 +138,25 @@ class DedupIndex {
       final sim = jaccard(c.trigrams, e.trigrams);
       final sameNumbers = c.numbers.length == e.numbers.length &&
           c.numbers.containsAll(e.numbers);
-      if (sim >= thresholds.nearIdenticalText && sameNumbers) {
+      final sameAnswer = c.answerKeys.intersection(e.answerKeys).isNotEmpty;
+      // Templates like "champion of league X in season Y" differ by one word
+      // and have different answers: those are different questions.
+      if (sameNumbers &&
+          (sim >= thresholds.nearIdenticalDifferentAnswer ||
+              (sim >= thresholds.nearIdenticalText && sameAnswer))) {
         return DuplicateReason('near-identical-wording', e.id, sim);
       }
-      final sameAnswer = c.answerKeys.intersection(e.answerKeys).isNotEmpty;
+      final differentKeys = c.factKey.isNotEmpty && e.factKey.isNotEmpty && c.factKey != e.factKey;
       if (sameAnswer) {
         // A "who am I" riddle about the same person is the same riddle, however
         // the clues are worded.
         if (c.category == Category.whoAmI && e.category == Category.whoAmI) {
           return DuplicateReason('same-riddle-subject', e.id);
         }
-        if (sim >= thresholds.sameAnswerText) {
+        // Same answer + similar wording = same fact, unless the questions name
+        // different years / numbers (e.g. champions of 2008 vs 2009).
+        final need = differentKeys ? thresholds.sameAnswerDifferentKeyText : thresholds.sameAnswerText;
+        if (sim >= need && sameNumbers) {
           return DuplicateReason('same-answer-similar-question', e.id, sim);
         }
       }
