@@ -28,3 +28,4 @@ hhkkll/backend/dist/
 hhkkll/backend/data/
 hhkkll/app/android/key.properties
 hhkkll/app/android/app/*.jks
+hhkkll/tools/__pycache__/
