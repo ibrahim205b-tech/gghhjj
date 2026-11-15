@@ -1,0 +1,374 @@
+{
+ "vectors": [
+  {
+   "input": "من سجّل الهدف الذهبي في نهائي أمم أوروبا 2000؟",
+   "normalized": "من سجل الهدف الذهبي في نهايي امم اوروبا 2000",
+   "tokens": [
+    "سجل",
+    "هدف",
+    "ذهبي",
+    "نهايي",
+    "امم",
+    "اوروبا",
+    "2000"
+   ],
+   "answer": "سجلهدفذهبينهاييامماوروبا2000",
+   "numbers": [
+    "2000"
+   ],
+   "trigram_count": 34
+  },
+  {
+   "input": "مَن سجَّل الهدفَ الذهبيَّ في نهائيّ أمم أوروبا ٢٠٠٠؟",
+   "normalized": "من سجل الهدف الذهبي في نهايي امم اوروبا 2000",
+   "tokens": [
+    "سجل",
+    "هدف",
+    "ذهبي",
+    "نهايي",
+    "امم",
+    "اوروبا",
+    "2000"
+   ],
+   "answer": "سجلهدفذهبينهاييامماوروبا2000",
+   "numbers": [
+    "2000"
+   ],
+   "trigram_count": 34
+  },
+  {
+   "input": "والبرازيل فازت بكأس العالم",
+   "normalized": "والبرازيل فازت بكاس العالم",
+   "tokens": [
+    "برازيل",
+    "فازت",
+    "بكاس",
+    "عالم"
+   ],
+   "answer": "برازيلفازتبكاسعالم",
+   "numbers": [],
+   "trigram_count": 21
+  },
+  {
+   "input": "Who scored the golden goal in the Euro 2000 final?",
+   "normalized": "who scored the golden goal in the euro 2000 final",
+   "tokens": [
+    "scored",
+    "golden",
+    "goal",
+    "euro",
+    "2000",
+    "final"
+   ],
+   "answer": "scoredgoldengoaleuro2000final",
+   "numbers": [
+    "2000"
+   ],
+   "trigram_count": 32
+  },
+  {
+   "input": "José Mourinho — Inter, Porto & Chelsea!",
+   "normalized": "jose mourinho inter porto chelsea",
+   "tokens": [
+    "jose",
+    "mourinho",
+    "inter",
+    "porto",
+    "chelsea"
+   ],
+   "answer": "josemourinhointerportochelsea",
+   "numbers": [],
+   "trigram_count": 33
+  },
+  {
+   "input": "إبراهيم ـ آدم ـ أحمد ـ مدرسة ـ مستشفى",
+   "normalized": "ابراهيم ادم احمد مدرسه مستشفي",
+   "tokens": [
+    "ابراهيم",
+    "ادم",
+    "احمد",
+    "مدرسه",
+    "مستشفي"
+   ],
+   "answer": "ابراهيمادماحمدمدرسهمستشفي",
+   "numbers": [],
+   "trigram_count": 28
+  },
+  {
+   "input": "Atatürk Olympic Stadium",
+   "normalized": "ataturk olympic stadium",
+   "tokens": [
+    "ataturk",
+    "olympic",
+    "stadium"
+   ],
+   "answer": "ataturkolympicstadium",
+   "numbers": [],
+   "trigram_count": 23
+  },
+  {
+   "input": "Ole Gunnar Solskjær",
+   "normalized": "ole gunnar solskjaer",
+   "tokens": [
+    "ole",
+    "gunnar",
+    "solskjaer"
+   ],
+   "answer": "olegunnarsolskjaer",
+   "numbers": [],
+   "trigram_count": 20
+  },
+  {
+   "input": "للاعبين في الدوري الإسباني",
+   "normalized": "للاعبين في الدوري الاسباني",
+   "tokens": [
+    "دوري",
+    "اسباني"
+   ],
+   "answer": "دورياسباني",
+   "numbers": [],
+   "trigram_count": 11
+  },
+  {
+   "input": "كم لاعباً تستطيع تسمية من منتخب البرازيل شاركوا في كأس العالم؟",
+   "normalized": "كم لاعبا تستطيع تسميه من منتخب البرازيل شاركوا في كاس العالم",
+   "tokens": [
+    "منتخب",
+    "برازيل",
+    "شاركوا",
+    "كاس",
+    "عالم"
+   ],
+   "answer": "منتخببرازيلشاركواكاسعالم",
+   "numbers": [],
+   "trigram_count": 28
+  }
+ ],
+ "pairs": [
+  {
+   "a": 0,
+   "b": 1,
+   "similarity": 1.0
+  },
+  {
+   "a": 0,
+   "b": 2,
+   "similarity": 0.0
+  },
+  {
+   "a": 0,
+   "b": 3,
+   "similarity": 0.06451612903225806
+  },
+  {
+   "a": 0,
+   "b": 4,
+   "similarity": 0.0
+  },
+  {
+   "a": 0,
+   "b": 5,
+   "similarity": 0.01639344262295082
+  },
+  {
+   "a": 0,
+   "b": 6,
+   "similarity": 0.0
+  },
+  {
+   "a": 0,
+   "b": 7,
+   "similarity": 0.0
+  },
+  {
+   "a": 0,
+   "b": 8,
+   "similarity": 0.022727272727272728
+  },
+  {
+   "a": 0,
+   "b": 9,
+   "similarity": 0.0
+  },
+  {
+   "a": 1,
+   "b": 2,
+   "similarity": 0.0
+  },
+  {
+   "a": 1,
+   "b": 3,
+   "similarity": 0.06451612903225806
+  },
+  {
+   "a": 1,
+   "b": 4,
+   "similarity": 0.0
+  },
+  {
+   "a": 1,
+   "b": 5,
+   "similarity": 0.01639344262295082
+  },
+  {
+   "a": 1,
+   "b": 6,
+   "similarity": 0.0
+  },
+  {
+   "a": 1,
+   "b": 7,
+   "similarity": 0.0
+  },
+  {
+   "a": 1,
+   "b": 8,
+   "similarity": 0.022727272727272728
+  },
+  {
+   "a": 1,
+   "b": 9,
+   "similarity": 0.0
+  },
+  {
+   "a": 2,
+   "b": 3,
+   "similarity": 0.0
+  },
+  {
+   "a": 2,
+   "b": 4,
+   "similarity": 0.0
+  },
+  {
+   "a": 2,
+   "b": 5,
+   "similarity": 0.020833333333333332
+  },
+  {
+   "a": 2,
+   "b": 6,
+   "similarity": 0.0
+  },
+  {
+   "a": 2,
+   "b": 7,
+   "similarity": 0.0
+  },
+  {
+   "a": 2,
+   "b": 8,
+   "similarity": 0.0
+  },
+  {
+   "a": 2,
+   "b": 9,
+   "similarity": 0.3611111111111111
+  },
+  {
+   "a": 3,
+   "b": 4,
+   "similarity": 0.0
+  },
+  {
+   "a": 3,
+   "b": 5,
+   "similarity": 0.0
+  },
+  {
+   "a": 3,
+   "b": 6,
+   "similarity": 0.0
+  },
+  {
+   "a": 3,
+   "b": 7,
+   "similarity": 0.0
+  },
+  {
+   "a": 3,
+   "b": 8,
+   "similarity": 0.0
+  },
+  {
+   "a": 3,
+   "b": 9,
+   "similarity": 0.0
+  },
+  {
+   "a": 4,
+   "b": 5,
+   "similarity": 0.0
+  },
+  {
+   "a": 4,
+   "b": 6,
+   "similarity": 0.0
+  },
+  {
+   "a": 4,
+   "b": 7,
+   "similarity": 0.019230769230769232
+  },
+  {
+   "a": 4,
+   "b": 8,
+   "similarity": 0.0
+  },
+  {
+   "a": 4,
+   "b": 9,
+   "similarity": 0.0
+  },
+  {
+   "a": 5,
+   "b": 6,
+   "similarity": 0.0
+  },
+  {
+   "a": 5,
+   "b": 7,
+   "similarity": 0.0
+  },
+  {
+   "a": 5,
+   "b": 8,
+   "similarity": 0.0
+  },
+  {
+   "a": 5,
+   "b": 9,
+   "similarity": 0.01818181818181818
+  },
+  {
+   "a": 6,
+   "b": 7,
+   "similarity": 0.023809523809523808
+  },
+  {
+   "a": 6,
+   "b": 8,
+   "similarity": 0.0
+  },
+  {
+   "a": 6,
+   "b": 9,
+   "similarity": 0.0
+  },
+  {
+   "a": 7,
+   "b": 8,
+   "similarity": 0.0
+  },
+  {
+   "a": 7,
+   "b": 9,
+   "similarity": 0.0
+  },
+  {
+   "a": 8,
+   "b": 9,
+   "similarity": 0.0
+  }
+ ]
+}

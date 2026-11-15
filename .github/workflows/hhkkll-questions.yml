@@ -1,0 +1,84 @@
+name: HHKKLL — generate verified questions (feed)
+
+# Generates new questions with the AI provider, verifies them independently
+# and publishes them to the `hhkkll-feed` branch, which the app downloads.
+# Costs money only when the ANTHROPIC_API_KEY secret is set; every run is
+# capped by HHKKLL_MAX_USD_PER_RUN (default $1).
+on:
+  schedule:
+    - cron: '17 3 * * *'   # once a day; each run is capped (see max_usd)
+  workflow_dispatch:
+    inputs:
+      per_category:
+        description: 'Questions to generate per section'
+        default: '6'
+      max_usd:
+        description: 'Spending cap for this run (USD)'
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hhkkll-feed
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      HHKKLL_MODEL: ${{ vars.HHKKLL_MODEL }}
+    steps:
+      - name: Check configuration
+        id: cfg
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::notice::ANTHROPIC_API_KEY secret not set — skipping generation (no cost)."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.enabled == 'true'
+
+      - name: Check out the feed branch (create it if missing)
+        if: steps.cfg.outputs.enabled == 'true'
+        run: |
+          if git ls-remote --exit-code --heads origin hhkkll-feed >/dev/null; then
+            git fetch origin hhkkll-feed
+            git worktree add feed-branch origin/hhkkll-feed
+            (cd feed-branch && git checkout -B hhkkll-feed)
+          else
+            git worktree add --detach feed-branch
+            (cd feed-branch && git checkout --orphan hhkkll-feed && git rm -rfq . && mkdir -p feed)
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.cfg.outputs.enabled == 'true'
+        with:
+          node-version: '22'
+
+      - name: Generate and verify
+        if: steps.cfg.outputs.enabled == 'true'
+        working-directory: hhkkll/backend
+        run: |
+          npm ci
+          npx tsc -p .
+          node dist/src/cli.js generate \
+            --out "$GITHUB_WORKSPACE/feed-branch/feed" \
+            --per-category "${{ inputs.per_category || '6' }}" \
+            --max-usd "${{ inputs.max_usd || vars.HHKKLL_MAX_USD_PER_RUN || '1' }}" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish
+        if: steps.cfg.outputs.enabled == 'true'
+        working-directory: feed-branch
+        run: |
+          git config user.name "hhkkll-feed-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add feed
+          if git diff --cached --quiet; then echo "No new questions."; exit 0; fi
+          git commit -m "feed: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push origin hhkkll-feed
