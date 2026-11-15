@@ -6,7 +6,7 @@ name: HHKKLL — generate verified questions (feed)
 # capped by HHKKLL_MAX_USD_PER_RUN (default $1).
 on:
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '17 3 * * *'   # once a day; each run is capped (see max_usd)
   workflow_dispatch:
     inputs:
       per_category:
