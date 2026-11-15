@@ -19,3 +19,12 @@ app/android/key.properties
 server/data/
 server/*.db
 *.gosbak
+
+# HHKKLL
+hhkkll/**/.dart_tool/
+hhkkll/**/build/
+hhkkll/backend/node_modules/
+hhkkll/backend/dist/
+hhkkll/backend/data/
+hhkkll/app/android/key.properties
+hhkkll/app/android/app/*.jks
