@@ -1,0 +1,110 @@
+name: Sawti AI — engine evaluation (Arabic, CPU)
+
+# Real comparison of open voice-cloning engines on Arabic text.
+# Runs on GitHub-hosted CPU runners (no GPU) - this deliberately mirrors the
+# free CPU hosting the backend will run on.
+on:
+  push:
+    paths:
+      - 'sawtiai/tools/engine_eval/**'
+      - '.github/workflows/sawti-engine-eval.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sawti-eval-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    name: Generate (${{ matrix.engine }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [silma, chatterbox, xtts]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: System packages
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+
+      - name: Licensed reference voice (bundled in the MIT/Apache SILMA package)
+        run: |
+          mkdir -p /tmp/refpkg && cd /tmp/refpkg
+          pip download --no-deps silma-tts==1.0.5 -q
+          python -m zipfile -e silma_tts-1.0.5-py3-none-any.whl x
+          cp x/silma_tts/infer/ref_audio_samples/ar.ref.24k.wav /tmp/ref.wav
+          echo "REF_TEXT=ويدقق النظر في القرآن الكريم وسائر الكتب السماوية ويتبع مسالك الرسل العظام عليهم الصلاة والسلام." >> "$GITHUB_ENV"
+
+      - name: Install engine (silma)
+        if: matrix.engine == 'silma'
+        run: |
+          pip install torch==2.8.0 torchaudio==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install "torchcodec==0.7.*" silma-tts==1.0.5 soundfile
+
+      - name: Install engine (chatterbox)
+        if: matrix.engine == 'chatterbox'
+        run: |
+          pip install torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install chatterbox-tts==0.1.7 soundfile
+
+      - name: Install engine (xtts)
+        if: matrix.engine == 'xtts'
+        run: |
+          pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install "torchcodec==0.7.*" coqui-tts==0.28.0 soundfile
+
+      - name: Generate Arabic test set
+        env:
+          COQUI_TOS_AGREED: '1'
+        run: |
+          python sawtiai/tools/engine_eval/run_engine.py --engine ${{ matrix.engine }} \
+            --ref /tmp/ref.wav --ref-text "$REF_TEXT" --out out/${{ matrix.engine }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-${{ matrix.engine }}
+          path: out/${{ matrix.engine }}
+          retention-days: 14
+
+  score:
+    name: Score (Whisper ASR + speaker similarity)
+    needs: generate
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: eval-*
+          path: audio
+      - name: Install scorers
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install faster-whisper resemblyzer soundfile "numpy<2.3"
+          mkdir -p /tmp/refpkg && cd /tmp/refpkg
+          pip download --no-deps silma-tts==1.0.5 -q
+          python -m zipfile -e silma_tts-1.0.5-py3-none-any.whl x
+          cp x/silma_tts/infer/ref_audio_samples/ar.ref.24k.wav /tmp/ref.wav
+      - name: Score
+        run: python sawtiai/tools/engine_eval/score.py --audio-dir audio --ref /tmp/ref.wav --out report
+      - name: Publish report
+        if: always()
+        run: cat report/report.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-report
+          path: report
+          retention-days: 30
