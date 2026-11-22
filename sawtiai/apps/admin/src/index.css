@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* ENJAZ design tokens - shared identity with the student app. */
+@theme {
+  --color-navy: #0a1628;
+  --color-navy-deep: #060e1c;
+  --color-navy-surface: #13233b;
+  --color-brand: #4f8cff;
+  --color-cyan: #38d6e8;
+  --color-violet: #6c63ff;
+  --color-success: #7be07a;
+  --color-warning: #ffb547;
+  --color-danger: #ff5a6e;
+  --color-muted: #9aa8c3;
+  --radius-card: 24px;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: system-ui, "Segoe UI", Tahoma, "Noto Sans Arabic", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #f2f6ff;
+  background:
+    radial-gradient(600px 400px at 0% 0%, rgba(28, 109, 208, 0.35), transparent 70%),
+    radial-gradient(500px 360px at 100% 30%, rgba(34, 184, 207, 0.28), transparent 70%),
+    radial-gradient(400px 300px at 10% 90%, rgba(180, 71, 79, 0.18), transparent 70%),
+    linear-gradient(180deg, #0e2340, #0a1628 40%, #060e1c);
+  background-attachment: fixed;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(14px);
+}
+
+.btn-brand {
+  background: linear-gradient(90deg, #2c5da0, #3b8fb8, #8ed9a6);
+  box-shadow: 0 6px 18px rgba(59, 143, 184, 0.35);
+}
+
+.btn-hot {
+  background: linear-gradient(90deg, #b4306c, #e0457b, #ff6a5a);
+  box-shadow: 0 6px 18px rgba(224, 69, 123, 0.35);
+}
+
+input, select, textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.55rem 0.8rem;
+  color: inherit;
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid #38d6e8; outline-offset: 0; }
+select option { background: #13233b; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: start; font-weight: 600; color: #9aa8c3; font-size: 0.8rem; padding: 0.5rem; }
+td { padding: 0.55rem 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.06); vertical-align: top; }

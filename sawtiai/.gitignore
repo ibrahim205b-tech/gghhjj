@@ -1,0 +1,55 @@
+# ---------------------------------------------------------------
+# ENJAZ — never commit secrets, keys, user data or build output
+# ---------------------------------------------------------------
+
+# Secrets / environment
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+*.jks
+*.keystore
+key.properties
+google-services.json
+GoogleService-Info.plist
+service-account*.json
+*firebase-adminsdk*.json
+supabase/.temp/
+supabase/.branches/
+supabase/functions/.env
+
+# User data / exports / uploads
+exports/
+uploads/
+*.db
+*.sqlite*
+enjaz-data-*.json
+
+# Flutter / Dart / Android
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+build/
+apps/student/android/.gradle/
+apps/student/android/local.properties
+apps/student/android/app/upload-keystore.jks
+*.apk
+*.aab
+*.iml
+dist/
+
+# Node / web
+node_modules/
+apps/admin/dist/
+*.log
+coverage/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+tmp/

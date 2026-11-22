@@ -1,0 +1,61 @@
+# Supabase CLI configuration (local development & CI).
+# Production settings are configured in the Supabase dashboard; see docs/BACKEND_SETUP.md.
+project_id = "enjaz"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = false
+
+[inbucket]
+enabled = false
+
+[storage]
+enabled = true
+file_size_limit = "100MiB"
+
+[auth]
+enabled = true
+site_url = "com.enjaz.student://login-callback"
+additional_redirect_urls = ["com.enjaz.student://login-callback", "http://localhost:5173"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+enable_signup = true
+# "Continue without an account" in the student app uses anonymous sessions.
+enable_anonymous_sign_ins = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false
+
+# Google sign-in. Enabled in the hosted project from the dashboard (docs/BACKEND_SETUP.md);
+# for local use set enabled = true and export the two variables below (never commit them).
+[auth.external.google]
+enabled = false
+client_id = "env(SUPABASE_AUTH_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_GOOGLE_SECRET)"
+skip_nonce_check = false
+
+[edge_runtime]
+enabled = true
+policy = "per_worker"
+
+# Authorization is verified inside the function (admin JWT or cron secret).
+[functions.send-notifications]
+verify_jwt = false
+
+[functions.delete-account]
+verify_jwt = true

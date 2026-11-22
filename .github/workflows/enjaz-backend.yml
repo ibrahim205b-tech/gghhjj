@@ -1,0 +1,74 @@
+name: ENJAZ — Database & backend
+
+on:
+  push:
+    paths:
+      - 'sawtiai/supabase/**'
+      - '.github/workflows/enjaz-backend.yml'
+  pull_request:
+    paths:
+      - 'sawtiai/supabase/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enjaz-backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rls:
+    name: Migrations + RLS security tests (PostgreSQL 16)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply stub + migrations + seed
+        working-directory: sawtiai/supabase
+        run: |
+          psql -v ON_ERROR_STOP=1 -qc "create database enjaz"
+          psql -v ON_ERROR_STOP=1 -q -d enjaz -f tests/local_supabase_stub.sql
+          for f in migrations/*.sql seed.sql; do echo "== $f"; psql -v ON_ERROR_STOP=1 -q -d enjaz -f "$f"; done
+      - name: RLS & behaviour tests
+        working-directory: sawtiai/supabase
+        run: psql -v ON_ERROR_STOP=1 -q -d enjaz -f tests/rls_test.sql
+
+  e2e:
+    name: Real Supabase stack end-to-end (auth, REST, storage, edge functions)
+    needs: rls
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Start local Supabase (migrations + seed applied)
+        working-directory: sawtiai
+        run: supabase start -x studio,imgproxy,mailpit,logflare,vector,supavisor
+      - name: End-to-end test
+        working-directory: sawtiai
+        run: |
+          eval "$(supabase status -o env)"
+          npm install --no-save @supabase/supabase-js@2 >/dev/null
+          SUPABASE_URL="$API_URL" ANON_KEY="$ANON_KEY" SERVICE_KEY="$SERVICE_ROLE_KEY" node supabase/tests/e2e.mjs
+      - name: Edge function logs
+        if: failure()
+        working-directory: sawtiai
+        run: docker logs $(docker ps -qf "name=supabase_edge_runtime") 2>&1 | tail -80 || true

@@ -1,0 +1,54 @@
+name: ENJAZ — Admin dashboard
+
+on:
+  push:
+    paths:
+      - 'sawtiai/apps/admin/**'
+      - '.github/workflows/enjaz-admin.yml'
+  pull_request:
+    paths:
+      - 'sawtiai/apps/admin/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enjaz-admin-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: sawtiai/apps/admin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: sawtiai/apps/admin/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Build (public Supabase URL + anon key from repository variables)
+        env:
+          VITE_SUPABASE_URL: ${{ vars.ENJAZ_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.ENJAZ_SUPABASE_ANON_KEY }}
+        run: npx vite build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ENJAZ-admin-dashboard
+          path: sawtiai/apps/admin/dist
+          retention-days: 30
+      - name: Summary
+        run: |
+          {
+            echo "## ✅ ENJAZ admin dashboard built"
+            echo "Static site in **Artifacts → ENJAZ-admin-dashboard**. Host it on any static host (see docs/DEPLOYMENT.md)."
+            echo "Backend configured: ${{ vars.ENJAZ_SUPABASE_URL != '' }}"
+          } >> "$GITHUB_STEP_SUMMARY"
