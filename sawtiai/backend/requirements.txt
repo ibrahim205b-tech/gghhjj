@@ -1,6 +1,0 @@
-# API server (engine-independent)
-fastapi==0.118.3
-uvicorn[standard]==0.54.0
-python-multipart==0.0.34
-numpy>=1.24,<=1.26.4
-soundfile>=0.12
