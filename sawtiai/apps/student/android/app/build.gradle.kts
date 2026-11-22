@@ -19,7 +19,9 @@ if (hasReleaseKey) {
 
 android {
     namespace = "com.enjaz.student"
-    compileSdk = flutter.compileSdkVersion
+    // 37: required by flutter_local_notifications / androidx.core 1.19 (AAR metadata).
+    // compileSdk only affects compilation; targetSdk and minSdk are unchanged.
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
