@@ -20,8 +20,11 @@ RUN useradd -m -u 1000 user && mkdir -p /opt/hf /app && chown -R user /opt/hf /a
 
 WORKDIR /app
 COPY requirements.txt requirements-silma.txt ./
-RUN pip install torch==2.8.0 torchaudio==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu \
- && pip install -r requirements.txt -r requirements-silma.txt
+# A compiler is needed only while installing (some deps build from source).
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential \
+ && pip install torch==2.8.0 torchaudio==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu \
+ && pip install -r requirements.txt -r requirements-silma.txt \
+ && apt-get purge -y build-essential && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 COPY --chown=user app ./app
 USER user
