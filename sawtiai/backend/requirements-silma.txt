@@ -1,0 +1,4 @@
+# SILMA TTS engine (CPU). Install CPU torch first:
+#   pip install torch==2.8.0 torchaudio==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
+torchcodec==0.7.*
+silma-tts==1.0.5

@@ -1,0 +1,85 @@
+name: Sawti AI — backend tests
+
+on:
+  push:
+    paths:
+      - 'sawtiai/backend/**'
+      - 'sawtiai/tools/**'
+      - '.github/workflows/sawti-backend.yml'
+  pull_request:
+    paths:
+      - 'sawtiai/backend/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sawti-backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit:
+    name: Unit & API tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+      - name: Install
+        working-directory: sawtiai/backend
+        run: pip install -r requirements-dev.txt
+      - name: pytest
+        working-directory: sawtiai/backend
+        run: python -m pytest -v
+
+  real-engine:
+    name: Real engine in production Docker image (SILMA, CPU)
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build production image
+        run: docker build -t sawti-backend sawtiai/backend
+      - name: Start server
+        run: |
+          # Throw-away key, generated per run, never stored.
+          KEY=$(python3 -c "import secrets;print(secrets.token_urlsafe(32))")
+          echo "::add-mask::$KEY"
+          echo "SAWTI_API_KEY=$KEY" >> "$GITHUB_ENV"
+          docker run -d --name sawti -p 7860:7860 -e SAWTI_API_KEY="$KEY" sawti-backend
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Licensed test voice (bundled in the MIT-licensed SILMA package)
+        run: |
+          mkdir -p /tmp/refpkg && cd /tmp/refpkg
+          pip download --no-deps silma-tts==1.0.5 -q
+          python -m zipfile -e silma_tts-1.0.5-py3-none-any.whl x
+          cp x/silma_tts/infer/ref_audio_samples/ar.ref.24k.wav /tmp/ref.wav
+          ffmpeg -loglevel error -y -i /tmp/ref.wav -c:a aac -b:a 128k /tmp/ref.m4a
+      - name: End-to-end smoke test (M4A upload -> clone -> 4 Arabic sentences)
+        run: |
+          pip install httpx
+          python sawtiai/tools/smoke_test.py --url http://127.0.0.1:7860 --sample /tmp/ref.m4a \
+            --transcript "ويدقق النظر في القرآن الكريم وسائر الكتب السماوية ويتبع مسالك الرسل العظام عليهم الصلاة والسلام." \
+            --out smoke_out
+      - name: Verify speech with Whisper ASR
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install faster-whisper resemblyzer soundfile "numpy<2.3"
+          python sawtiai/tools/asr_check.py --dir smoke_out --ref /tmp/ref.wav --max-cer 0.4
+          cat smoke_out/asr_report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Server log (no text or audio is logged)
+        if: always()
+        run: docker logs sawti 2>&1 | tail -100
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-smoke
+          path: smoke_out
+          retention-days: 7
