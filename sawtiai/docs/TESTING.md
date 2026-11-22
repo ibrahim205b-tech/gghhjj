@@ -8,7 +8,7 @@ test explicitly says it uses a scripted fixture.
 | Layer | Where | Tests | Result |
 |---|---|---|---|
 | Database security (RLS) & behaviour | `supabase/tests/rls_test.sql` on PostgreSQL 16 | 1 script, ~40 assertions | ✅ pass (local + CI) |
-| Real Supabase stack end-to-end | `supabase/tests/e2e.mjs` on `supabase start` (Auth, PostgREST, Storage, Edge Functions) | 17 checks | see [CI](#ci) |
+| Real Supabase stack end-to-end | `supabase/tests/e2e.mjs` on `supabase start` (Auth, PostgREST, Storage, Edge Functions) | 16 checks | ✅ pass ([run](https://github.com/ibrahim205b-tech/gghhjj/actions/runs/44985774968)) |
 | Student app logic | `apps/student/test/logic_test.dart` | 15 | ✅ pass |
 | Student app repository / offline store (real SQLite) | `apps/student/test/repository_test.dart` | 9 | ✅ pass |
 | Student app UI flows (widget tests) | `apps/student/test/widget_flow_test.dart` | 6 | ✅ pass |
