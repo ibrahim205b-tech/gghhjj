@@ -57,6 +57,7 @@ jobs:
           python-version: '3.11'
       - name: Licensed test voice (bundled in the MIT-licensed SILMA package)
         run: |
+          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
           mkdir -p /tmp/refpkg && cd /tmp/refpkg
           pip download --no-deps silma-tts==1.0.5 -q
           python -m zipfile -e silma_tts-1.0.5-py3-none-any.whl x
