@@ -61,7 +61,7 @@ jobs:
           node-version: '22'
       - name: Start local Supabase (migrations + seed applied)
         working-directory: sawtiai
-        run: supabase start -x studio,imgproxy,mailpit,logflare,vector,supavisor
+        run: supabase start -x studio,imgproxy,mailpit,logflare,vector,supavisor,realtime
       - name: End-to-end test
         working-directory: sawtiai
         run: |
