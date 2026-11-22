@@ -55,7 +55,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: supabase/setup-cli@v1
         with:
-          version: latest
+          version: 3.2.0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -65,10 +65,12 @@ jobs:
       - name: End-to-end test
         working-directory: sawtiai
         run: |
+          supabase status -o env | cut -d= -f1   # variable names only (no values in logs)
           eval "$(supabase status -o env)"
           npm install --no-save @supabase/supabase-js@2 >/dev/null
-          SUPABASE_URL="$API_URL" ANON_KEY="$ANON_KEY" SERVICE_KEY="$SERVICE_ROLE_KEY" node supabase/tests/e2e.mjs
+          SUPABASE_URL="$API_URL" ANON_KEY="${ANON_KEY:-$PUBLISHABLE_KEY}" SERVICE_KEY="${SERVICE_ROLE_KEY:-$SECRET_KEY}" \
+            node supabase/tests/e2e.mjs
       - name: Edge function logs
         if: failure()
         working-directory: sawtiai
-        run: docker logs $(docker ps -qf "name=supabase_edge_runtime") 2>&1 | tail -80 || true
+        run: for c in $(docker ps -aqf "name=supabase_edge_runtime") $(docker ps -aqf "name=supabase_db"); do docker logs "$c" 2>&1 | tail -60; done
