@@ -58,7 +58,7 @@ jobs:
         if: matrix.engine == 'xtts'
         run: |
           pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
-          pip install "torchcodec==0.7.*" coqui-tts==0.28.0 soundfile
+          pip install "torchcodec==0.7.*" coqui-tts==0.28.0 soundfile six
 
       - name: Generate Arabic test set
         env:

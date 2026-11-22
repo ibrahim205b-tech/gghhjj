@@ -91,17 +91,9 @@ class _CreateVoiceScreenState extends State<CreateVoiceScreen> {
     final perm = await _recorder.ensurePermission();
     if (!mounted) return;
     if (perm != MicPermission.granted) {
-      setState(() => _error = perm == MicPermission.permanentlyDenied
-          ? 'صلاحية الميكروفون مرفوضة. فعّلها من إعدادات التطبيق.'
-          : 'يحتاج التطبيق إلى صلاحية الميكروفون لتسجيل صوتك.');
-      if (perm == MicPermission.permanentlyDenied) {
-        final open = await confirmDialog(context,
-            title: 'صلاحية الميكروفون',
-            body: 'رفضت صلاحية الميكروفون سابقاً. هل تريد فتح إعدادات التطبيق لتفعيلها؟',
-            ok: 'فتح الإعدادات',
-            danger: false);
-        if (open) await openPermissionSettings();
-      }
+      setState(() => _error = 'يحتاج التطبيق إلى صلاحية الميكروفون لتسجيل صوتك. '
+          'إن رفضتها سابقاً ففعّلها من: إعدادات الهاتف ← التطبيقات ← صوتي AI ← الأذونات ← الميكروفون. '
+          'ويمكنك بدلاً من ذلك رفع ملف صوتي.');
       return;
     }
     final state = context.read<AppState>();

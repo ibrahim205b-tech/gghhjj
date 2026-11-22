@@ -7,6 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     HF_HOME=/opt/hf \
+    CACHED_PATH_CACHE_ROOT=/opt/hf/cached_path \
     SAWTI_ENGINE=silma \
     SAWTI_DATA_DIR=/tmp/sawti \
     PORT=7860
@@ -27,10 +28,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
  && apt-get purge -y build-essential && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 COPY --chown=user app ./app
-USER user
 
 # Pre-fetch weights (SILMA, Vocos vocoder, CATT diacritizer) into the image.
-RUN python -c "from app.engines.silma import SilmaEngine; SilmaEngine().load(); print('weights cached')"
+# CATT stores its ONNX files inside its package directory, so this runs as
+# root and ownership is handed to the runtime user afterwards.
+RUN python -c "from app.engines.silma import SilmaEngine; SilmaEngine().load(); print('weights cached')" \
+ && chown -R user /opt/hf "$(python -c 'import catt_tashkeel,os;print(os.path.dirname(catt_tashkeel.__file__))')"
+USER user
 
 EXPOSE 7860
 HEALTHCHECK --interval=60s --timeout=10s --start-period=300s CMD python -c "import urllib.request,os;urllib.request.urlopen('http://127.0.0.1:%s/health'%os.environ.get('PORT','7860'))"

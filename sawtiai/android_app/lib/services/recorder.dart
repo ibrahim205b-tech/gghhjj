@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
 
-enum MicPermission { granted, denied, permanentlyDenied }
+enum MicPermission { granted, denied }
 
 /// Microphone recording to 24 kHz mono WAV (the format the engine works with,
 /// so no lossy step is added) with a live level stream for the UI.
@@ -16,14 +15,9 @@ class VoiceRecorder {
   /// Normalised 0..1 input level, ~10 per second while recording.
   Stream<double> get levels => _levels.stream;
 
-  Future<MicPermission> ensurePermission() async {
-    var st = await Permission.microphone.status;
-    if (st.isGranted) return MicPermission.granted;
-    st = await Permission.microphone.request();
-    if (st.isGranted) return MicPermission.granted;
-    if (st.isPermanentlyDenied || st.isRestricted) return MicPermission.permanentlyDenied;
-    return MicPermission.denied;
-  }
+  /// Asks Android for the microphone permission (system dialog) if needed.
+  Future<MicPermission> ensurePermission() async =>
+      await _rec.hasPermission(request: true) ? MicPermission.granted : MicPermission.denied;
 
   Future<void> start(String path) async {
     await _rec.start(
@@ -66,5 +60,3 @@ class VoiceRecorder {
     await _rec.dispose();
   }
 }
-
-Future<void> openPermissionSettings() => openAppSettings();
