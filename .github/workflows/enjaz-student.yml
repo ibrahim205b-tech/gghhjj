@@ -1,0 +1,131 @@
+name: ENJAZ — Student app (APK)
+
+on:
+  push:
+    paths:
+      - 'sawtiai/apps/student/**'
+      - '.github/workflows/enjaz-student.yml'
+  pull_request:
+    paths:
+      - 'sawtiai/apps/student/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enjaz-student-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: '3.47.9'
+
+jobs:
+  build:
+    name: Analyze, test, build ENJAZ.apk
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: sawtiai/apps/student
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+
+      - name: Dependencies
+        run: flutter pub get
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+      - name: Tests
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q libsqlite3-dev
+          flutter test --reporter expanded
+
+      - name: Configure release signing
+        id: signing
+        working-directory: sawtiai/apps/student/android
+        env:
+          KEYSTORE_B64: ${{ secrets.ENJAZ_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ENJAZ_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ENJAZ_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ENJAZ_KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > app/upload-keystore.jks
+            printf "storeFile=upload-keystore.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n" \
+              "$KEYSTORE_PASSWORD" "$KEY_ALIAS" "$KEY_PASSWORD" > key.properties
+            echo "mode=release key" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=debug key (set ENJAZ_KEYSTORE_* secrets for a permanent release key)" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Public client configuration only. The Supabase *anon* key and Firebase
+      # client options are designed to ship inside apps; protection comes from
+      # RLS. Service-role keys and Firebase server credentials never go here.
+      - name: Build release APK
+        env:
+          SUPABASE_URL: ${{ vars.ENJAZ_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ vars.ENJAZ_SUPABASE_ANON_KEY }}
+          FIREBASE_API_KEY: ${{ vars.ENJAZ_FIREBASE_API_KEY }}
+          FIREBASE_APP_ID: ${{ vars.ENJAZ_FIREBASE_APP_ID }}
+          FIREBASE_SENDER_ID: ${{ vars.ENJAZ_FIREBASE_SENDER_ID }}
+          FIREBASE_PROJECT_ID: ${{ vars.ENJAZ_FIREBASE_PROJECT_ID }}
+        run: |
+          flutter build apk --release \
+            --dart-define=SUPABASE_URL="$SUPABASE_URL" \
+            --dart-define=SUPABASE_ANON_KEY="$SUPABASE_ANON_KEY" \
+            --dart-define=FIREBASE_API_KEY="$FIREBASE_API_KEY" \
+            --dart-define=FIREBASE_APP_ID="$FIREBASE_APP_ID" \
+            --dart-define=FIREBASE_SENDER_ID="$FIREBASE_SENDER_ID" \
+            --dart-define=FIREBASE_PROJECT_ID="$FIREBASE_PROJECT_ID"
+          mkdir -p ../../dist
+          cp build/app/outputs/flutter-apk/app-release.apk ../../dist/ENJAZ.apk
+
+      - name: Remove signing material
+        if: always()
+        working-directory: sawtiai/apps/student/android
+        run: rm -f key.properties app/upload-keystore.jks
+
+      - name: Verify APK
+        working-directory: sawtiai/dist
+        run: |
+          test -s ENJAZ.apk
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          "$BT/aapt2" dump badging ENJAZ.apk > badging.txt
+          head -3 badging.txt
+          grep -q "package: name='com.enjaz.student'" badging.txt
+          grep -q "application-label:'إنجاز'" badging.txt
+          "$BT/apksigner" verify --print-certs ENJAZ.apk | head -2
+          sha256sum ENJAZ.apk > ENJAZ.apk.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ENJAZ-apk
+          path: |
+            sawtiai/dist/ENJAZ.apk
+            sawtiai/dist/ENJAZ.apk.sha256
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Summary
+        working-directory: sawtiai/dist
+        run: |
+          {
+            echo "## ✅ ENJAZ.apk"
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Size | $(du -h ENJAZ.apk | cut -f1) |"
+            echo "| SHA-256 | \`$(cut -d' ' -f1 ENJAZ.apk.sha256)\` |"
+            echo "| Signing | ${{ steps.signing.outputs.mode }} |"
+            echo "| Backend configured | ${{ vars.ENJAZ_SUPABASE_URL != '' }} |"
+            echo ""
+            echo "Download: **Artifacts → ENJAZ-apk** below."
+          } >> "$GITHUB_STEP_SUMMARY"
