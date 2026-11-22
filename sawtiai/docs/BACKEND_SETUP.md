@@ -17,7 +17,18 @@ content, the admin dashboard and push notifications.
 
 ## 2. Apply the database
 
-Option A — Supabase CLI (recommended):
+Option 0 — GitHub Actions, no local tools (easiest):
+
+1. GitHub → **Settings → Secrets and variables → Actions**.
+2. **Secrets**: `SUPABASE_ACCESS_TOKEN` (supabase.com → Account → Access Tokens) and
+   `SUPABASE_DB_PASSWORD` (the database password chosen when the project was created).
+3. **Variables**: `ENJAZ_SUPABASE_URL` (`https://<ref>.supabase.co`) and `ENJAZ_SUPABASE_ANON_KEY`
+   (Project Settings → API → anon / publishable key — public by design, protected by RLS).
+4. **Actions → «ENJAZ — Deploy backend to Supabase» → Run workflow.** It applies the migrations and seed,
+   deploys both Edge Functions, pushes the auth settings (anonymous sign-in, redirect URLs) and checks the
+   live API.
+
+Option A — Supabase CLI:
 
 ```bash
 cd sawtiai

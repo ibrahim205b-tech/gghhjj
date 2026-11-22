@@ -1,0 +1,129 @@
+name: ENJAZ — Deploy backend to Supabase
+
+# Deploys the database (migrations + seed), auth settings and Edge Functions to the
+# owner's hosted Supabase project. Needs (Settings → Secrets and variables → Actions):
+#   Variables: ENJAZ_SUPABASE_URL       https://<ref>.supabase.co   (public)
+#              ENJAZ_SUPABASE_ANON_KEY  anon / publishable key      (public, used for the check)
+#   Secrets:   SUPABASE_ACCESS_TOKEN    supabase.com/dashboard/account/tokens
+#              SUPABASE_DB_PASSWORD     the project's database password
+# Nothing secret is printed. Without these values the job explains what is missing and stops.
+
+on:
+  workflow_dispatch:
+    inputs:
+      push_auth_config:
+        description: 'Also push auth settings from config.toml (anonymous sign-in, redirect URLs)'
+        type: boolean
+        default: true
+  push:
+    branches: ['**']
+    paths:
+      - 'sawtiai/supabase/migrations/**'
+      - 'sawtiai/supabase/functions/**'
+      - 'sawtiai/supabase/seed.sql'
+      - '.github/workflows/enjaz-deploy-supabase.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: enjaz-deploy-supabase
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to hosted Supabase
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      PROJECT_URL: ${{ vars.ENJAZ_SUPABASE_URL }}
+      ANON_KEY: ${{ vars.ENJAZ_SUPABASE_ANON_KEY }}
+    steps:
+      - name: Check configuration
+        id: cfg
+        run: |
+          missing=""
+          [ -n "$SUPABASE_ACCESS_TOKEN" ] || missing="$missing SUPABASE_ACCESS_TOKEN(secret)"
+          [ -n "$SUPABASE_DB_PASSWORD" ]  || missing="$missing SUPABASE_DB_PASSWORD(secret)"
+          [ -n "$PROJECT_URL" ]           || missing="$missing ENJAZ_SUPABASE_URL(variable)"
+          if [ -n "$missing" ]; then
+            {
+              echo "### ⏭️ Supabase deploy skipped"
+              echo "Missing:$missing"
+              echo
+              echo "Add them in Settings → Secrets and variables → Actions, then re-run this workflow."
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ref=$(echo "$PROJECT_URL" | sed -E 's#^https?://([a-z0-9]+)\.supabase\.co/?$#\1#')
+          if ! echo "$ref" | grep -Eq '^[a-z0-9]{20}$'; then
+            echo "::error::ENJAZ_SUPABASE_URL must look like https://<project-ref>.supabase.co"
+            exit 1
+          fi
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.ready == 'true'
+
+      - uses: supabase/setup-cli@v1
+        if: steps.cfg.outputs.ready == 'true'
+        with:
+          version: 3.2.0
+
+      - name: Link project
+        if: steps.cfg.outputs.ready == 'true'
+        working-directory: sawtiai
+        run: supabase link --project-ref "${{ steps.cfg.outputs.ref }}" -p "$SUPABASE_DB_PASSWORD"
+
+      - name: Migrations to apply (dry run)
+        if: steps.cfg.outputs.ready == 'true'
+        working-directory: sawtiai
+        run: supabase db push --dry-run --include-seed -p "$SUPABASE_DB_PASSWORD"
+
+      - name: Apply migrations + seed
+        if: steps.cfg.outputs.ready == 'true'
+        working-directory: sawtiai
+        run: supabase db push --include-seed -p "$SUPABASE_DB_PASSWORD" --yes
+
+      - name: Deploy Edge Functions
+        if: steps.cfg.outputs.ready == 'true'
+        working-directory: sawtiai
+        run: |
+          supabase functions deploy send-notifications --no-verify-jwt --use-api --project-ref "${{ steps.cfg.outputs.ref }}"
+          supabase functions deploy delete-account --use-api --project-ref "${{ steps.cfg.outputs.ref }}"
+
+      - name: Push auth settings (anonymous sign-in, redirect URLs)
+        id: authcfg
+        if: steps.cfg.outputs.ready == 'true' && (github.event_name == 'push' || inputs.push_auth_config)
+        continue-on-error: true
+        working-directory: sawtiai
+        run: supabase config push --yes
+
+      - name: Verify the live API
+        if: steps.cfg.outputs.ready == 'true'
+        run: |
+          if [ -z "$ANON_KEY" ]; then
+            echo "ENJAZ_SUPABASE_ANON_KEY not set; skipping live check." ; exit 0
+          fi
+          code=$(curl -s -o grades.json -w '%{http_code}' "$PROJECT_URL/rest/v1/grades?select=code&order=sort_order" \
+            -H "apikey: $ANON_KEY" -H "Authorization: Bearer $ANON_KEY")
+          echo "HTTP $code"; cat grades.json; echo
+          [ "$code" = "200" ] && grep -q grade_12 grades.json
+
+      - name: Summary
+        if: always() && steps.cfg.outputs.ready == 'true'
+        run: |
+          {
+            echo "### ENJAZ backend deploy"
+            echo "| Step | Result |"
+            echo "|---|---|"
+            echo "| Project | \`${{ steps.cfg.outputs.ref }}\` |"
+            echo "| Migrations + seed | ${{ job.status }} |"
+            echo "| Auth settings push | ${{ steps.authcfg.outcome || 'not run' }} |"
+            echo
+            echo "Next: create the first admin (docs/BACKEND_SETUP.md §6), then re-run the APK and dashboard workflows."
+          } >> "$GITHUB_STEP_SUMMARY"
