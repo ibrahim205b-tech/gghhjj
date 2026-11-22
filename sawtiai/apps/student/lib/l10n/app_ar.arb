@@ -1,0 +1,432 @@
+{
+  "@@locale": "ar",
+  "appName": "إنجاز",
+  "slogan": "خطوتك اليوم تصنع مستقبلك",
+  "welcome": "هلا بيك بإنجاز",
+  "goodMorning": "صباح الخير",
+  "goodEvening": "مساء الخير",
+  "helloName": "هلا {name}",
+  "@helloName": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "todayProgress": "شكد أنجزت اليوم؟",
+  "todayTasks": "شنو عندك اليوم؟",
+  "studySchedule": "جدولي الدراسي",
+  "startStudying": "يلا نبدي دراسة",
+  "addTask": "ضيف مهمة",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "delete": "حذف",
+  "edit": "تعديل",
+  "close": "سد",
+  "done": "تم",
+  "next": "التالي",
+  "back": "رجوع",
+  "skip": "تخطي",
+  "confirm": "أكد",
+  "areYouSure": "متأكد تريد تكمل؟",
+  "deleteConfirm": "متأكد تريد تحذفها؟ ما تگدر ترجعها بعدين.",
+  "noInternet": "ماكو اتصال بالإنترنت",
+  "offlineHint": "تگدر تكمل شغلك، وراح نزامن من يرجع النت.",
+  "syncing": "دا نزامن بياناتك...",
+  "syncDone": "تمت المزامنة بنجاح",
+  "syncFailed": "ما گدرنا نزامن هسه، راح نحاول بعدين",
+  "lastSync": "آخر مزامنة: {when}",
+  "@lastSync": {
+    "placeholders": {
+      "when": {}
+    }
+  },
+  "neverSynced": "بعد ما صارت مزامنة",
+  "noTasks": "حالياً ما عندك مهام",
+  "congrats": "عاشت إيدك!",
+  "upcomingExams": "امتحاناتك الجاية",
+  "dailyMotivation": "تحفيز اليوم",
+  "myNotes": "ملاحظاتي",
+  "myLibrary": "مكتبتي",
+  "myAchievements": "إنجازاتي",
+  "tryAgain": "حاول مرة ثانية",
+  "loading": "لحظة، دا نحمل البيانات...",
+  "newUpdate": "أكو تحديث جديد للتطبيق",
+  "openTelegram": "افتح قناة التليجرام",
+  "downloadUpdate": "نزّل التحديث الجديد",
+  "updateNow": "حدّث التطبيق",
+  "later": "لاحقاً",
+  "updateBody": "هلا بيك! أكو تحديث جديد لتطبيق إنجاز. حدّث التطبيق حتى تستفاد من الميزات الجديدة.",
+  "updateMandatory": "هذا التحديث ضروري حتى تكمل تستخدم التطبيق.",
+  "completed": "مكتمل",
+  "inProgress": "دا تشتغل عليه",
+  "notStarted": "بعدك ما بديت",
+  "needsReview": "يحتاج مراجعة",
+  "errorGeneric": "صار خلل، حاول مرة ثانية",
+  "requiredField": "هذا الحقل مطلوب",
+  "seeAll": "شوف الكل",
+  "quickActions": "اختصارات",
+  "homeTab": "الرئيسية",
+  "scheduleTab": "جدولي",
+  "subjectsTab": "موادي",
+  "examsTab": "الاختبارات",
+  "moreTab": "المزيد",
+  "onbTitle1": "نظّم دراستك",
+  "onbBody1": "جدول، مهام، ومنظم ذكي يرتبلك وقتك حسب امتحاناتك.",
+  "onbTitle2": "تابع تقدمك",
+  "onbBody2": "شوف شكد خلصت من كل مادة، وشكد درست كل يوم.",
+  "onbTitle3": "اختبر نفسك",
+  "onbBody3": "بنك أسئلة ومكتبة ملازم مرتبة حسب صفك وفرعك.",
+  "getStarted": "يلا نبدي",
+  "signInGoogle": "سجّل دخول بحساب Google",
+  "continueOffline": "كمل بدون حساب",
+  "offlineModeNote": "بدون حساب، بياناتك تبقى على هذا الجهاز بس وما تنزامن.",
+  "backendMissing": "خدمة الحسابات بعدها ما مفعّلة بهذي النسخة. تگدر تستخدم التطبيق بدون حساب.",
+  "signInFailed": "ما گدرنا نسجل دخولك. حاول مرة ثانية.",
+  "signingIn": "دا نسجل دخولك...",
+  "profileSetup": "عرّفنا بنفسك",
+  "displayName": "اسمك",
+  "displayNameHint": "شنو تحب نناديك؟",
+  "governorate": "المحافظة (اختياري)",
+  "chooseStage": "بأي مرحلة أنت؟",
+  "chooseGrade": "بأي صف؟",
+  "chooseBranch": "شنو فرعك؟",
+  "chooseYear": "السنة الدراسية",
+  "setupDone": "كلشي جاهز!",
+  "setupDoneBody": "هسه نطلعلك المواد والمحتوى الخاص بصفك.",
+  "enterApp": "خش للتطبيق",
+  "subjectsCount": "المواد",
+  "weeklyGoal": "هدف الأسبوع",
+  "streakDays": "أيام متواصلة",
+  "tasksOf": "{done} من {total} مهام",
+  "@tasksOf": {
+    "placeholders": {
+      "done": {},
+      "total": {}
+    }
+  },
+  "studiedToday": "درست {time}",
+  "@studiedToday": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "hoursMinutes": "{h}س {m}د",
+  "@hoursMinutes": {
+    "placeholders": {
+      "h": {},
+      "m": {}
+    }
+  },
+  "fromYesterday": "{diff} عن البارحة",
+  "@fromYesterday": {
+    "placeholders": {
+      "diff": {}
+    }
+  },
+  "aiStudyPlan": "رتبلي دراستي",
+  "studyNow": "ادرس هسه",
+  "weeklyPerformance": "أداءك هذا الأسبوع",
+  "latestAnnouncements": "آخر الإعلانات",
+  "upcomingTasks": "مهامك الجاية",
+  "priorityHigh": "مهم",
+  "priorityNormal": "عادي",
+  "priorityLow": "مو مستعجل",
+  "taskTitle": "عنوان المهمة",
+  "dueDate": "تاريخ التسليم",
+  "startTime": "يبدي",
+  "endTime": "يخلص",
+  "priority": "الأهمية",
+  "subject": "المادة",
+  "noSubject": "بدون مادة",
+  "estimatedMinutes": "الوقت المتوقع (دقايق)",
+  "addSession": "ضيف حصة دراسة",
+  "editSession": "عدّل الحصة",
+  "sessionTitle": "شنو راح تدرس؟",
+  "repeatWeekly": "تتكرر كل أسبوع",
+  "breakMinutes": "الاستراحة (دقايق)",
+  "note": "ملاحظة",
+  "markDone": "خلصتها",
+  "plannedVsActual": "المخطط: {planned} • الفعلي: {actual}",
+  "@plannedVsActual": {
+    "placeholders": {
+      "planned": {},
+      "actual": {}
+    }
+  },
+  "listView": "قائمة",
+  "calendarView": "تقويم",
+  "noSessions": "ماكو حصص بهذا اليوم",
+  "weekdays": "الاثنين,الثلاثاء,الأربعاء,الخميس,الجمعة,السبت,الأحد",
+  "chapters": "الفصول",
+  "topics": "المواضيع",
+  "difficultTopic": "موضوع صعب",
+  "markDifficult": "علّمه صعب",
+  "revision": "مراجعة",
+  "noSubjects": "بعد ما انضافت مواد لصفك. راح تطلع هنا أول ما تنضاف.",
+  "subjectProgress": "خلصت {percent}٪",
+  "@subjectProgress": {
+    "placeholders": {
+      "percent": {}
+    }
+  },
+  "difficulty": "الصعوبة",
+  "easy": "سهل",
+  "medium": "متوسط",
+  "hard": "صعب",
+  "planner": "المنظم الذكي",
+  "plannerIntro": "گلّي شكد ساعة تگدر تدرس باليوم، وأني أوزعلك المواضيع الباقية حسب الصعوبة وموعد الامتحانات.",
+  "dailyHours": "ساعات الدراسة باليوم",
+  "planDays": "لكم يوم أرتب؟",
+  "generatePlan": "رتبلي الخطة",
+  "planReady": "رتبتلك {count} مهمة. بالتوفيق!",
+  "@planReady": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "behindSchedule": "عندك {count} مهام فاتت وما خلصتها",
+  "@behindSchedule": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "redistribute": "وزعها من جديد",
+  "redistributed": "رتبنا المهام اللي فاتتك على الأيام الجاية",
+  "nothingToPlan": "ماكو مواضيع باقية حتى نرتبها. يا سلام!",
+  "exams": "امتحاناتي",
+  "addExam": "ضيف امتحان",
+  "examTitle": "اسم الامتحان",
+  "examDate": "موعد الامتحان",
+  "officialExam": "موعد رسمي",
+  "personalExam": "تذكير شخصي",
+  "daysLeft": "باقي {days} يوم",
+  "@daysLeft": {
+    "placeholders": {
+      "days": {}
+    }
+  },
+  "examToday": "الامتحان اليوم!",
+  "examTomorrow": "عندك امتحان باچر",
+  "examPassed": "خلص",
+  "score": "الدرجة",
+  "maxScore": "من كم",
+  "targetScore": "الدرجة اللي تريدها",
+  "recordScore": "سجّل درجتك",
+  "requiredScore": "حتى توصل لمعدل {target} تحتاج {needed} بالامتحانات الباقية",
+  "@requiredScore": {
+    "placeholders": {
+      "target": {},
+      "needed": {}
+    }
+  },
+  "source": "المصدر",
+  "noExams": "ماكو امتحانات جاية",
+  "questionBank": "بنك الأسئلة",
+  "startTest": "ابدي الاختبار",
+  "timedTest": "بوقت",
+  "untimedTest": "بدون وقت",
+  "chooseSubject": "اختار المادة",
+  "chooseChapter": "اختار الفصل (اختياري)",
+  "allChapters": "كل الفصول",
+  "questionsCount": "عدد الأسئلة",
+  "noQuestions": "بعد ماكو أسئلة منشورة لهذا الاختيار.",
+  "questionNofM": "سؤال {n} من {m}",
+  "@questionNofM": {
+    "placeholders": {
+      "n": {},
+      "m": {}
+    }
+  },
+  "trueLabel": "صح",
+  "falseLabel": "غلط",
+  "yourAnswer": "جوابك",
+  "typeAnswer": "اكتب جوابك هنا",
+  "submit": "سلّم",
+  "submitConfirm": "متأكد تريد تسلم؟ باقي أسئلة ما جاوبتها.",
+  "result": "النتيجة",
+  "correctOf": "{correct} صح من {total}",
+  "@correctOf": {
+    "placeholders": {
+      "correct": {},
+      "total": {}
+    }
+  },
+  "reviewAnswers": "راجع الأجوبة",
+  "explanation": "الشرح",
+  "correctAnswer": "الجواب الصح",
+  "saveQuestion": "احفظ السؤال",
+  "savedQuestions": "الأسئلة المحفوظة",
+  "retryMistakes": "عيد الأسئلة اللي غلطت بيها",
+  "testHistory": "سجل الاختبارات",
+  "timeUp": "خلص الوقت!",
+  "officialSourceBadge": "سؤال وزاري",
+  "practiceBadge": "سؤال تدريبي",
+  "library": "المكتبة",
+  "search": "دوّر...",
+  "allTypes": "الكل",
+  "download": "نزّل",
+  "downloading": "دا ننزل...",
+  "downloaded": "منزّل على جهازك",
+  "open": "افتح",
+  "favorites": "المفضلة",
+  "readingHistory": "قريتها مؤخراً",
+  "noFiles": "ماكو ملفات بعد",
+  "fileSize": "الحجم: {size}",
+  "@fileSize": {
+    "placeholders": {
+      "size": {}
+    }
+  },
+  "needOnlineToDownload": "تحتاج إنترنت حتى تنزل الملف أول مرة",
+  "motivation": "التحفيز",
+  "share": "شارك",
+  "previousMotivation": "تحفيزات سابقة",
+  "noMotivation": "بعد ماكو تحفيز منشور",
+  "tools": "الأدوات",
+  "pomodoro": "بومودورو",
+  "focusTime": "وقت التركيز",
+  "breakTime": "وقت الاستراحة",
+  "start": "ابدي",
+  "pause": "وكف",
+  "resume": "كمّل",
+  "reset": "صفّر",
+  "stopwatch": "ساعة إيقاف",
+  "saveStudyTime": "سجّل وقت الدراسة",
+  "studyTimeSaved": "سجلنا {minutes} دقيقة دراسة. عاشت إيدك!",
+  "@studyTimeSaved": {
+    "placeholders": {
+      "minutes": {}
+    }
+  },
+  "gradeCalculator": "حاسبة المعدل",
+  "percentageCalculator": "حاسبة النسبة",
+  "addRow": "ضيف مادة",
+  "average": "المعدل",
+  "value": "القيمة",
+  "total": "المجموع",
+  "percentage": "النسبة",
+  "tasks": "مهامي",
+  "expenses": "مصاريفي",
+  "addExpense": "ضيف مصروف",
+  "amount": "المبلغ (دينار)",
+  "monthTotal": "مجموع هذا الشهر",
+  "goals": "أهدافي",
+  "weeklyGoals": "أهداف الأسبوع",
+  "monthlyGoals": "أهداف الشهر",
+  "addGoal": "ضيف هدف",
+  "goalTitle": "شنو هدفك؟",
+  "targetValue": "الهدف",
+  "progressValue": "وصلت",
+  "statistics": "إحصائياتي",
+  "totalStudyHours": "مجموع ساعات الدراسة",
+  "tasksCompleted": "مهام خلصتها",
+  "testsTaken": "اختبارات سويتها",
+  "avgScore": "معدل درجاتك",
+  "achievementLocked": "بعدك ما وصلتله",
+  "reminders": "التذكيرات",
+  "addNote": "ضيف ملاحظة",
+  "noteTitle": "العنوان",
+  "noteBody": "اكتب ملاحظتك...",
+  "noNotes": "ماكو ملاحظات بعد",
+  "guidance": "دليل الجامعات",
+  "guidanceIntro": "معلومات عن الجامعات والكليات ومعدلات القبول.",
+  "admissionAverage": "معدل القبول",
+  "deadline": "آخر موعد للتقديم",
+  "lastUpdated": "آخر تحديث: {date}",
+  "@lastUpdated": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "officialInfo": "معلومة رسمية موثقة",
+  "unofficialInfo": "معلومة غير رسمية — تأكد منها",
+  "noGuidance": "بعد ماكو معلومات منشورة",
+  "settings": "الإعدادات",
+  "profile": "ملفي الشخصي",
+  "editProfile": "عدّل ملفي",
+  "academicInfo": "معلوماتي الدراسية",
+  "changeYear": "غيّر السنة أو الصف",
+  "notifications": "الإشعارات",
+  "motivationNotifications": "إشعارات التحفيز",
+  "studyReminders": "تذكيرات الدراسة",
+  "examReminders": "تذكيرات الامتحانات",
+  "announcementNotifications": "الإعلانات",
+  "theme": "المظهر",
+  "themeDark": "داكن",
+  "themeLight": "فاتح",
+  "themeSystem": "حسب الجهاز",
+  "cloudSync": "المزامنة السحابية",
+  "syncNow": "زامن هسه",
+  "exportData": "صدّر بياناتي",
+  "exportReady": "جهزنا ملف بياناتك",
+  "deleteAccount": "احذف حسابي",
+  "deleteAccountBody": "راح نحذف حسابك وكل بياناتك من السيرفر ومن هذا الجهاز. هذا الشي ما يرجع.",
+  "accountDeleted": "انحذف حسابك",
+  "signOut": "سجّل خروج",
+  "signIn": "سجّل دخول",
+  "appVersion": "نسخة التطبيق {version}",
+  "@appVersion": {
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "privacy": "الخصوصية",
+  "privacyBody": "بياناتك الدراسية إلك وحدك. ما نبيعها ولا نشاركها. المزامنة اختيارية، وتگدر تصدّر بياناتك أو تحذف حسابك متى ما تريد. ما نطلب ولا نحفظ كلمة سر حساب Google مالتك.",
+  "localAccount": "حساب محلي (بدون مزامنة)",
+  "announcement": "إعلان",
+  "gotIt": "تمام، فهمت",
+  "dismiss": "سد",
+  "accountSuspended": "حسابك موقوف مؤقتاً. تواصل ويانا إذا تعتقد أكو غلط.",
+  "minutesShort": "{m} د",
+  "@minutesShort": {
+    "placeholders": {
+      "m": {}
+    }
+  },
+  "today": "اليوم",
+  "tomorrow": "باچر",
+  "yesterday": "البارحة",
+  "calendar": "التقويم",
+  "achievement_first_task": "أول مهمة!",
+  "achievement_tasks_50": "50 مهمة",
+  "achievement_streak_3": "3 أيام متواصلة",
+  "achievement_streak_7": "أسبوع كامل",
+  "achievement_streak_30": "شهر بلا توقف",
+  "achievement_hours_10": "10 ساعات دراسة",
+  "achievement_hours_100": "100 ساعة دراسة",
+  "achievement_first_test": "أول اختبار",
+  "achievement_perfect_test": "درجة كاملة",
+  "achievementUnlocked": "عاشت إيدك! حصلت على إنجاز: {name}",
+  "@achievementUnlocked": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "notifStudyTitle": "وكت الدراسة!",
+  "notifStudyBody": "عندك حصة {title} هسه. يلا نبدي!",
+  "@notifStudyBody": {
+    "placeholders": {
+      "title": {}
+    }
+  },
+  "notifExamTitle": "انتبه، عندك امتحان باچر",
+  "notifExamBody": "{title} — راجع زين وبالتوفيق!",
+  "@notifExamBody": {
+    "placeholders": {
+      "title": {}
+    }
+  },
+  "pomodoroDone": "خلص وقت التركيز! خذلك استراحة.",
+  "breakDone": "خلصت الاستراحة، يلا نرجع للدراسة.",
+  "dayUnit": "يوم",
+  "months": "كانون الثاني,شباط,آذار,نيسان,أيار,حزيران,تموز,آب,أيلول,تشرين الأول,تشرين الثاني,كانون الأول",
+  "uniPublic": "حكومية",
+  "uniPrivate": "أهلية",
+  "uniInstitute": "معهد",
+  "channelCentral": "القبول المركزي",
+  "channelParallel": "الدراسة الموازية",
+  "channelEvening": "الدراسة المسائية",
+  "channelPrivate": "الكليات الأهلية",
+  "channelScholarship": "منحة",
+  "channelOther": "أخرى",
+  "currencyIqd": "دينار"
+}

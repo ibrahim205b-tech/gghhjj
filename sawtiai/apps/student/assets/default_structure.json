@@ -1,0 +1,156 @@
+{
+ "academic_stages": [
+  {
+   "id": "local-stage-intermediate",
+   "code": "intermediate",
+   "name_ar": "المرحلة المتوسطة",
+   "name_en": "Intermediate",
+   "sort_order": 1
+  },
+  {
+   "id": "local-stage-preparatory",
+   "code": "preparatory",
+   "name_ar": "المرحلة الإعدادية",
+   "name_en": "Preparatory",
+   "sort_order": 2
+  }
+ ],
+ "grades": [
+  {
+   "id": "local-grade_7",
+   "stage_id": "local-stage-intermediate",
+   "code": "grade_7",
+   "name_ar": "الأول المتوسط",
+   "has_branches": false,
+   "sort_order": 1
+  },
+  {
+   "id": "local-grade_8",
+   "stage_id": "local-stage-intermediate",
+   "code": "grade_8",
+   "name_ar": "الثاني المتوسط",
+   "has_branches": false,
+   "sort_order": 2
+  },
+  {
+   "id": "local-grade_9",
+   "stage_id": "local-stage-intermediate",
+   "code": "grade_9",
+   "name_ar": "الثالث المتوسط",
+   "has_branches": false,
+   "sort_order": 3
+  },
+  {
+   "id": "local-grade_10",
+   "stage_id": "local-stage-preparatory",
+   "code": "grade_10",
+   "name_ar": "الرابع الإعدادي",
+   "has_branches": true,
+   "sort_order": 4
+  },
+  {
+   "id": "local-grade_11",
+   "stage_id": "local-stage-preparatory",
+   "code": "grade_11",
+   "name_ar": "الخامس الإعدادي",
+   "has_branches": true,
+   "sort_order": 5
+  },
+  {
+   "id": "local-grade_12",
+   "stage_id": "local-stage-preparatory",
+   "code": "grade_12",
+   "name_ar": "السادس الإعدادي",
+   "has_branches": true,
+   "sort_order": 6
+  }
+ ],
+ "academic_branches": [
+  {
+   "id": "local-grade_10-scientific",
+   "grade_id": "local-grade_10",
+   "code": "scientific",
+   "name_ar": "العلمي",
+   "sort_order": 1
+  },
+  {
+   "id": "local-grade_10-literary",
+   "grade_id": "local-grade_10",
+   "code": "literary",
+   "name_ar": "الأدبي",
+   "sort_order": 2
+  },
+  {
+   "id": "local-grade_11-applied",
+   "grade_id": "local-grade_11",
+   "code": "applied",
+   "name_ar": "العلمي التطبيقي",
+   "sort_order": 1
+  },
+  {
+   "id": "local-grade_11-biological",
+   "grade_id": "local-grade_11",
+   "code": "biological",
+   "name_ar": "العلمي الإحيائي",
+   "sort_order": 2
+  },
+  {
+   "id": "local-grade_11-literary",
+   "grade_id": "local-grade_11",
+   "code": "literary",
+   "name_ar": "الأدبي",
+   "sort_order": 3
+  },
+  {
+   "id": "local-grade_12-applied",
+   "grade_id": "local-grade_12",
+   "code": "applied",
+   "name_ar": "العلمي التطبيقي",
+   "sort_order": 1
+  },
+  {
+   "id": "local-grade_12-biological",
+   "grade_id": "local-grade_12",
+   "code": "biological",
+   "name_ar": "العلمي الإحيائي",
+   "sort_order": 2
+  },
+  {
+   "id": "local-grade_12-literary",
+   "grade_id": "local-grade_12",
+   "code": "literary",
+   "name_ar": "الأدبي",
+   "sort_order": 3
+  }
+ ],
+ "academic_years": [
+  {
+   "id": "local-year-2026",
+   "label": "2026-2027",
+   "is_current": true
+  }
+ ],
+ "settings": {
+  "governorates": [
+   "بغداد",
+   "البصرة",
+   "نينوى",
+   "أربيل",
+   "النجف",
+   "كربلاء",
+   "بابل",
+   "ذي قار",
+   "ديالى",
+   "الأنبار",
+   "كركوك",
+   "صلاح الدين",
+   "واسط",
+   "ميسان",
+   "المثنى",
+   "الديوانية",
+   "دهوك",
+   "السليمانية",
+   "حلبجة"
+  ]
+ }
+}
