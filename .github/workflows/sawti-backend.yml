@@ -6,6 +6,7 @@ on:
       - 'sawtiai/backend/**'
       - 'sawtiai/tools/**'
       - '.github/workflows/sawti-backend.yml'
+      - 'sawtiai/windows/**'
   pull_request:
     paths:
       - 'sawtiai/backend/**'
@@ -35,6 +36,24 @@ jobs:
       - name: pytest
         working-directory: sawtiai/backend
         run: python -m pytest -v
+
+  windows-script:
+    name: Windows launcher script parses on real Windows PowerShell
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse start_sawti.ps1 (Windows PowerShell 5.1)
+        shell: powershell
+        run: |
+          $t=$null; $e=$null
+          [System.Management.Automation.Language.Parser]::ParseFile("$pwd\sawtiai\windows\start_sawti.ps1",[ref]$t,[ref]$e) | Out-Null
+          if ($e) { $e | ForEach-Object { $_.ToString() }; exit 1 } else { "PARSE OK" }
+      - name: cloudflared download URL is valid
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe" -OutFile cf.exe
+          .\cf.exe --version
 
   real-engine:
     name: Real engine in production Docker image (SILMA, CPU)
